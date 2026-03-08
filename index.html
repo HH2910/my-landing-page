@@ -586,11 +586,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* last card full-width on 3-col */
-    .svc-card:last-child:nth-child(3n+1) {
-      grid-column: 1 / -1;
-      max-width: calc(33.33% - 11px);
-    }
+    /* 6 cards fill 3-col grid evenly — no last-card override needed */
 
     /* ─────────────────────────────────────────
        HOW IT WORKS
@@ -1472,7 +1468,6 @@
       .about-grid     { grid-template-columns: 1fr; gap: 40px; }
       .contact-grid   { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid    { grid-template-columns: 1fr 1fr; }
-      .svc-card:last-child:nth-child(3n+1) { grid-column: auto; max-width: none; }
       .testi-grid     { grid-template-columns: 1fr; }
     }
 
@@ -2029,17 +2024,6 @@
         </div>
       </div>
 
-      <div class="svc-card reveal">
-        <div class="svc-icon">🔍</div>
-        <div class="svc-title">Regulatory Audits &amp; Inspections</div>
-        <div class="svc-desc">Third-party inspection (TPI), ESD compliance audits, equipment functional audits, inventory audits, and facility &amp; EHS compliance inspections. Independent expert verification for regulatory submissions, insurance, lender diligence, and internal governance — structured reports suitable for regulatory acceptance and legal admissibility.</div>
-        <div class="svc-tags">
-          <span class="svc-tag">Third-Party Inspection</span>
-          <span class="svc-tag">ESD Compliance</span>
-          <span class="svc-tag">EHS Audits</span>
-          <span class="svc-tag">Equipment Audits</span>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -2074,10 +2058,10 @@
       </div>
 
       <div class="testi-card reveal">
-        <div class="testi-context">IBC / NCLT Proceedings</div>
-        <div class="testi-quote">"The valuation report was submitted to the NCLT and accepted without a single query from the resolution professional or the committee of creditors. The methodology was watertight. In an IBC context, that matters enormously."</div>
+        <div class="testi-context">Individual · Property Valuation for Capital Gains</div>
+        <div class="testi-quote">"I needed a registered valuer's report for my property sale — the Income Tax filing required a fair value certificate. Harihar explained the whole process clearly, visited the site, and delivered the report well within the deadline. My CA was satisfied with it immediately. No back-and-forth, no stress."</div>
         <div class="testi-author">
-          <div class="testi-role">Corporate Finance Counsel · Chennai</div>
+          <div class="testi-role">Property Owner · Chennai</div>
         </div>
       </div>
 
@@ -2517,7 +2501,6 @@
                 <option>Chartered Engineer Certification</option>
                 <option>PLI Verification Services</option>
                 <option>EPCG Verification</option>
-                <option>Regulatory Audits &amp; Inspections</option>
                 <option>Not sure — need guidance</option>
               </select>
             </div>
@@ -2566,7 +2549,6 @@
           <li><a href="#services">Chartered Engineer Certification</a></li>
           <li><a href="#services">PLI Verification</a></li>
           <li><a href="#services">EPCG Verification</a></li>
-          <li><a href="#services">Regulatory Audits &amp; Inspections</a></li>
         </ul>
       </div>
 
