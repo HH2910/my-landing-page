@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84" fill="none" role="img" aria-label="Harihar.S — Chartered Engineer and Registered Valuer">
+
+  <!-- ══ SEAL MARK ══ -->
+  <!-- Outer decagon: center (42,42) r=37 -->
+  <polygon
+    points="42,5 63.7,12.1 77.2,30.6 77.2,53.4 63.7,71.9 42,79 20.3,71.9 6.8,53.4 6.8,30.6 20.3,12.1"
+    fill="#1e1b4b"/>
+  <!-- Inner accent ring -->
+  <polygon
+    points="42,12 59.6,17.7 70.5,32.7 70.5,51.3 59.6,66.3 42,72 24.4,66.3 13.5,51.3 13.5,32.7 24.4,17.7"
+    fill="none" stroke="#0a7c5c" stroke-width="1.5"/>
+  <!-- HS monogram -->
+  <text x="42" y="50"
+    text-anchor="middle"
+    font-family="Georgia,'Times New Roman',serif"
+    font-size="21" font-style="italic" font-weight="700"
+    fill="#ffffff" letter-spacing="-0.5">HS</text>
+
+  <!-- ══ DIVIDER ══ -->
+  <line x1="96" y1="16" x2="96" y2="68" stroke="#e2e0f0" stroke-width="1"/>
+
+  <!-- ══ WORDMARK ══ -->
+  <text x="110" y="40"
+    font-family="Georgia,'Times New Roman',serif"
+    font-size="25" font-weight="600" font-style="italic"
+    fill="#1e1b4b" letter-spacing="-0.2">Harihar.S</text>
+  <line x1="110" y1="47" x2="334" y2="47" stroke="#0a7c5c" stroke-width="0.75" opacity="0.5"/>
+  <text x="110" y="59"
+    font-family="Arial,Helvetica,sans-serif"
+    font-size="8" font-weight="700"
+    fill="#0a7c5c" letter-spacing="2.8">CHARTERED ENGINEER</text>
+  <text x="110" y="72"
+    font-family="Arial,Helvetica,sans-serif"
+    font-size="8" font-weight="400"
+    fill="#6e6a8c" letter-spacing="2.8">REGISTERED VALUER</text>
+
+</svg>

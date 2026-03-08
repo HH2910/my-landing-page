@@ -27,24 +27,24 @@
        TOKENS
     ───────────────────────────────────────── */
     :root {
-      --bg:           #faf7f2;
-      --bg-alt:       #f2ece0;
-      --bg-dark:      #16120d;
-      --bg-dark2:     #1f1a14;
-      --bg-dark3:     #2a231b;
-      --text:         #18130d;
-      --text-mid:     #4a3d2e;
-      --text-light:   #7a6a55;
-      --on-dark:      rgba(250,247,242,0.92);
-      --on-dark-mid:  rgba(250,247,242,0.65);
-      --on-dark-dim:  rgba(250,247,242,0.38);
-      --accent:       #c05c0a;
-      --accent-h:     #d96a0c;
-      --accent-pale:  rgba(192,92,10,0.09);
-      --accent-ring:  rgba(192,92,10,0.25);
+      --bg:           #fafafd;
+      --bg-alt:       #f2f1f8;
+      --bg-dark:      #1e1b4b;
+      --bg-dark2:     #231f56;
+      --bg-dark3:     #282463;
+      --text:         #12101e;
+      --text-mid:     #3c3858;
+      --text-light:   #6e6a8c;
+      --on-dark:      rgba(250,250,253,0.93);
+      --on-dark-mid:  rgba(250,250,253,0.65);
+      --on-dark-dim:  rgba(250,250,253,0.38);
+      --accent:       #0a7c5c;
+      --accent-h:     #0d9068;
+      --accent-pale:  rgba(10,124,92,0.09);
+      --accent-ring:  rgba(10,124,92,0.25);
       --white:        #ffffff;
-      --border:       #ddd3c0;
-      --border-dark:  #2e2720;
+      --border:       #e2e0f0;
+      --border-dark:  #2c2870;
       --green:        #22a06b;
       --green-pale:   rgba(34,160,107,0.12);
       --green-ring:   rgba(34,160,107,0.3);
@@ -1566,6 +1566,222 @@
       .footer-regs     { font-size: 10px; line-height: 1.8; }
       .footer-bottom   { flex-direction: column; gap: 10px; align-items: flex-start; }
     }
+
+    /* ─────────────────────────────────────────
+       VALUATION ADVISOR CHAT WIDGET
+    ───────────────────────────────────────── */
+    .va-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(192,92,10,0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      z-index: 9000;
+    }
+    .va-fab:hover { background: var(--accent-h); box-shadow: 0 6px 24px rgba(192,92,10,0.5); }
+    .va-fab--open { transform: rotate(45deg); }
+    .va-fab svg { width: 24px; height: 24px; transition: opacity 0.15s; }
+    .va-fab .va-icon-chat { display: block; }
+    .va-fab .va-icon-close { display: none; }
+    .va-fab--open .va-icon-chat { display: none; }
+    .va-fab--open .va-icon-close { display: block; }
+
+    .va-window {
+      position: fixed;
+      bottom: 96px;
+      right: 28px;
+      width: 360px;
+      max-height: 540px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      z-index: 8999;
+      overflow: hidden;
+      animation: va-slide-in 0.22s cubic-bezier(0.22,1,0.36,1);
+    }
+    .va-window[hidden] { display: none !important; }
+
+    @keyframes va-slide-in {
+      from { opacity: 0; transform: translateY(16px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .va-header {
+      background: var(--bg-dark);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .va-header-info { display: flex; align-items: center; gap: 10px; }
+    .va-header-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+      flex-shrink: 0;
+    }
+    .va-header-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--on-dark);
+      line-height: 1.2;
+    }
+    .va-header-sub {
+      font-size: 11px;
+      color: var(--on-dark-mid);
+      letter-spacing: 0.02em;
+    }
+    .va-close {
+      background: none;
+      border: none;
+      color: var(--on-dark-mid);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      padding: 2px 4px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+    .va-close:hover { color: var(--on-dark); }
+
+    .va-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 200px;
+      max-height: 360px;
+    }
+    .va-messages::-webkit-scrollbar { width: 4px; }
+    .va-messages::-webkit-scrollbar-track { background: transparent; }
+    .va-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    .va-msg {
+      max-width: 85%;
+      padding: 10px 13px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .va-msg--user {
+      align-self: flex-end;
+      background: var(--accent);
+      color: #fff;
+      border-bottom-right-radius: 3px;
+    }
+    .va-msg--assistant {
+      align-self: flex-start;
+      background: var(--bg-alt);
+      color: var(--text);
+      border-bottom-left-radius: 3px;
+      border: 1px solid var(--border);
+    }
+
+    .va-typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 12px 14px;
+      min-height: 40px;
+    }
+    .va-typing span {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--text-light);
+      animation: va-bounce 1.2s infinite;
+    }
+    .va-typing span:nth-child(2) { animation-delay: 0.18s; }
+    .va-typing span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes va-bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+
+    .va-input-area {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 12px 12px 12px;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+      flex-shrink: 0;
+    }
+    .va-input {
+      flex: 1;
+      resize: none;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 9px 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      line-height: 1.5;
+      max-height: 100px;
+      overflow-y: auto;
+      transition: border-color 0.15s;
+    }
+    .va-input:focus { border-color: var(--accent-ring); box-shadow: 0 0 0 3px var(--accent-ring); }
+    .va-input::placeholder { color: var(--text-light); }
+    .va-send {
+      width: 36px; height: 36px;
+      border-radius: var(--r);
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .va-send:hover:not(:disabled) { background: var(--accent-h); }
+    .va-send:disabled { opacity: 0.45; cursor: not-allowed; }
+    .va-send svg { width: 16px; height: 16px; }
+
+    .va-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding: 0 16px 12px;
+    }
+    .va-suggestion {
+      font-size: 12px;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--white);
+      color: var(--text-mid);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .va-suggestion:hover { border-color: var(--accent); color: var(--accent); }
+
+    @media (max-width: 479px) {
+      .va-window { right: 12px; left: 12px; width: auto; bottom: 84px; }
+      .va-fab { bottom: 20px; right: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -1576,9 +1792,10 @@
 <nav id="main-nav">
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <svg class="hs-badge" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <polygon points="19,2 30,6.5 36,17 34,28.5 25,36 13,36 4,28.5 2,17 8,6.5" fill="#c05c0a"/>
-        <text x="19" y="24.5" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" font-style="italic" font-weight="700" fill="white">HS</text>
+      <svg class="hs-badge" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="42,5 63.7,12.1 77.2,30.6 77.2,53.4 63.7,71.9 42,79 20.3,71.9 6.8,53.4 6.8,30.6 20.3,12.1" fill="#1e1b4b"/>
+        <polygon points="42,12 59.6,17.7 70.5,32.7 70.5,51.3 59.6,66.3 42,72 24.4,66.3 13.5,51.3 13.5,32.7 24.4,17.7" fill="none" stroke="#0a7c5c" stroke-width="1.5"/>
+        <text x="42" y="50" text-anchor="middle" font-family="Georgia,serif" font-size="21" font-style="italic" font-weight="700" fill="#ffffff" letter-spacing="-0.5">HS</text>
       </svg>
       <div class="nav-brand-text">
         <div class="nav-brand-name">Harihar.S</div>
@@ -1844,11 +2061,7 @@
         <div class="testi-context">CA Firm · Recurring Retainer</div>
         <div class="testi-quote">"We route all our client valuation mandates through Harihar.S. Every report is accepted first time — by banks, by auditors, by the Income Tax department. That reliability is non-negotiable for us. We've been working together for over four years."</div>
         <div class="testi-author">
-          <div class="testi-avatar">SR</div>
-          <div>
-            <div class="testi-name">S. Raghunathan</div>
-            <div class="testi-role">Partner, CA Firm · Chennai</div>
-          </div>
+          <div class="testi-role">Partner, CA Firm · Chennai</div>
         </div>
       </div>
 
@@ -1856,11 +2069,7 @@
         <div class="testi-context">Manufacturing Corporate · PLI Scheme</div>
         <div class="testi-quote">"Our PLI investment verification was time-critical. Harihar.S completed the on-site assessment within two days, submitted in the ministry-prescribed format, and the claim was approved in the same assessment cycle. That outcome saved us a full year of delay."</div>
         <div class="testi-author">
-          <div class="testi-avatar">AK</div>
-          <div>
-            <div class="testi-name">Anand Krishnamurthy</div>
-            <div class="testi-role">CFO, Electronics Manufacturer · Pune</div>
-          </div>
+          <div class="testi-role">CFO, Electronics Manufacturer · Pune</div>
         </div>
       </div>
 
@@ -1868,11 +2077,7 @@
         <div class="testi-context">IBC / NCLT Proceedings</div>
         <div class="testi-quote">"The valuation report was submitted to the NCLT and accepted without a single query from the resolution professional or the committee of creditors. The methodology was watertight. In an IBC context, that matters enormously."</div>
         <div class="testi-author">
-          <div class="testi-avatar">PV</div>
-          <div>
-            <div class="testi-name">Pradeep Venkataraman</div>
-            <div class="testi-role">Corporate Finance Counsel · Chennai</div>
-          </div>
+          <div class="testi-role">Corporate Finance Counsel · Chennai</div>
         </div>
       </div>
 
@@ -2450,6 +2655,147 @@
     document.getElementById('form-body').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   }
+</script>
+
+<!-- ══════════════════════════════════════
+     VALUATION ADVISOR CHAT WIDGET
+══════════════════════════════════════ -->
+<button class="va-fab" id="va-fab" onclick="vaToggle()" aria-label="Open Valuation Advisor chat">
+  <svg class="va-icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="va-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
+<div class="va-window" id="va-window" hidden>
+  <div class="va-header">
+    <div class="va-header-info">
+      <div class="va-header-dot"></div>
+      <div>
+        <div class="va-header-title">Valuation Advisor</div>
+        <div class="va-header-sub">Axium Valuation Services</div>
+      </div>
+    </div>
+    <button class="va-close" onclick="vaToggle()" aria-label="Close chat">✕</button>
+  </div>
+  <div class="va-messages" id="va-messages"></div>
+  <div class="va-suggestions" id="va-suggestions">
+    <button class="va-suggestion" onclick="vaAsk(this)">When do I need a valuation?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">What is PLI verification?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">Documents for P&M valuation?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">What is EPCG certification?</button>
+  </div>
+  <div class="va-input-area">
+    <textarea id="va-input" class="va-input" placeholder="Ask about valuations…" rows="1" aria-label="Your message"></textarea>
+    <button id="va-send" class="va-send" onclick="vaSend()" aria-label="Send message">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function () {
+  const vaApiHistory = [];
+  let vaOpen = false;
+  let vaLoading = false;
+
+  function vaRenderMessage(role, text) {
+    const container = document.getElementById('va-messages');
+    const div = document.createElement('div');
+    div.className = 'va-msg va-msg--' + role;
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+
+  window.vaToggle = function () {
+    vaOpen = !vaOpen;
+    const win = document.getElementById('va-window');
+    const fab = document.getElementById('va-fab');
+    if (vaOpen) {
+      win.removeAttribute('hidden');
+      fab.classList.add('va-fab--open');
+      if (vaApiHistory.length === 0) {
+        vaRenderMessage('assistant', 'Hi, I\'m the Valuation Advisor for Axium Valuation Services. Ask me anything about valuations, certifications, or regulatory requirements — I\'m here to help.');
+      }
+      setTimeout(function () { document.getElementById('va-input').focus(); }, 80);
+    } else {
+      win.setAttribute('hidden', '');
+      fab.classList.remove('va-fab--open');
+    }
+  };
+
+  window.vaAsk = function (btn) {
+    const text = btn.textContent.trim();
+    document.getElementById('va-suggestions').style.display = 'none';
+    document.getElementById('va-input').value = text;
+    vaSend();
+  };
+
+  async function vaSend() {
+    if (vaLoading) return;
+    const input = document.getElementById('va-input');
+    const text = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('va-suggestions').style.display = 'none';
+
+    vaApiHistory.push({ role: 'user', content: text });
+    vaRenderMessage('user', text);
+
+    vaLoading = true;
+    document.getElementById('va-send').disabled = true;
+
+    const msgList = document.getElementById('va-messages');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'va-msg va-msg--assistant va-typing';
+    typingDiv.innerHTML = '<span></span><span></span><span></span>';
+    msgList.appendChild(typingDiv);
+    msgList.scrollTop = msgList.scrollHeight;
+
+    try {
+      const resp = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: vaApiHistory })
+      });
+      typingDiv.remove();
+      if (!resp.ok) throw new Error('API error');
+      const data = await resp.json();
+      vaApiHistory.push({ role: 'assistant', content: data.content });
+      vaRenderMessage('assistant', data.content);
+    } catch (_) {
+      typingDiv.remove();
+      vaRenderMessage('assistant', 'Sorry, something went wrong. Please try again or contact us directly at harihar@axium.co.in.');
+    }
+
+    vaLoading = false;
+    document.getElementById('va-send').disabled = false;
+  }
+
+  window.vaSend = vaSend;
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const inp = document.getElementById('va-input');
+    inp.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        vaSend();
+      }
+    });
+    inp.addEventListener('input', function () {
+      this.style.height = 'auto';
+      this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+    });
+  });
+}());
 </script>
 
 <!-- Schema: LocalBusiness / ProfessionalService -->

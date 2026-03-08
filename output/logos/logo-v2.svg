@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 84" fill="none" role="img" aria-label="Axium Valuation Services — Harihar.S">
+
+  <!-- ══ DIAMOND MARK ══ -->
+  <!-- Outer diamond: center (42,42) half-width 36 -->
+  <polygon points="42,6 78,42 42,78 6,42"
+    fill="none" stroke="#1e1b4b" stroke-width="2.2" stroke-linejoin="round"/>
+  <!-- Subtle crosshair guides -->
+  <line x1="6" y1="42" x2="78" y2="42" stroke="#1e1b4b" stroke-width="0.6" opacity="0.2"/>
+  <line x1="42" y1="6" x2="42" y2="78" stroke="#1e1b4b" stroke-width="0.6" opacity="0.2"/>
+  <!-- Emerald centre diamond -->
+  <polygon points="42,32 52,42 42,52 32,42" fill="#0a7c5c"/>
+
+  <!-- ══ DIVIDER ══ -->
+  <line x1="96" y1="16" x2="96" y2="68" stroke="#e2e0f0" stroke-width="1"/>
+
+  <!-- ══ WORDMARK ══ -->
+  <text x="112" y="38"
+    font-family="Arial,Helvetica,sans-serif"
+    font-size="22" font-weight="700"
+    fill="#1e1b4b" letter-spacing="4">AXIUM</text>
+  <text x="114" y="52"
+    font-family="Arial,Helvetica,sans-serif"
+    font-size="8.5" font-weight="600"
+    fill="#0a7c5c" letter-spacing="2.2">VALUATION SERVICES</text>
+  <line x1="112" y1="58" x2="310" y2="58" stroke="#e2e0f0" stroke-width="0.75"/>
+  <text x="112" y="71"
+    font-family="Georgia,'Times New Roman',serif"
+    font-size="10" font-style="italic"
+    fill="#6e6a8c">Harihar.S — Chartered Engineer &amp; Registered Valuer</text>
+
+</svg>
