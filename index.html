@@ -27,21 +27,21 @@
        TOKENS
     ───────────────────────────────────────── */
     :root {
-      --bg:           #fffdf9;
-      --bg-alt:       #fef5e8;
+      --bg:           #fffcf7;
+      --bg-alt:       #fdefd5;
       --bg-dark:      #1c1007;
       --bg-dark2:     #231508;
       --bg-dark3:     #2c1c0a;
-      --text:         #1a1008;
-      --text-mid:     #5a4030;
-      --text-light:   #8c6a50;
+      --text:         #180e04;
+      --text-mid:     #3e2a18;
+      --text-light:   #7a5a42;
       --on-dark:      rgba(255,252,245,0.93);
-      --on-dark-mid:  rgba(255,252,245,0.65);
+      --on-dark-mid:  rgba(255,252,245,0.68);
       --on-dark-dim:  rgba(255,252,245,0.38);
-      --accent:       #c84a0c;
-      --accent-h:     #e05a18;
-      --accent-pale:  rgba(200,74,12,0.09);
-      --accent-ring:  rgba(200,74,12,0.22);
+      --accent:       #d4500c;
+      --accent-h:     #f06020;
+      --accent-pale:  rgba(212,80,12,0.10);
+      --accent-ring:  rgba(212,80,12,0.25);
       --white:        #ffffff;
       --border:       #edd9c0;
       --border-dark:  #3d1c08;
@@ -115,7 +115,7 @@
 
     .s-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(30px, 3.8vw, 46px);
+      font-size: clamp(34px, 4.4vw, 54px);
       font-weight: 600;
       color: var(--text);
       margin-bottom: 16px;
@@ -128,7 +128,7 @@
       max-width: 600px;
     }
 
-    .s-header { margin-bottom: 52px; }
+    .s-header { margin-bottom: 40px; }
 
     /* dark section overrides */
     .dark { background: var(--bg-dark); color: var(--on-dark); }
@@ -308,7 +308,7 @@
        HERO
     ───────────────────────────────────────── */
     .hero {
-      padding: 136px 28px 88px;
+      padding: 118px 28px 68px;
       position: relative;
       overflow: hidden;
     }
@@ -364,7 +364,7 @@
 
     h1.hero-h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(44px, 6vw, 80px);
+      font-size: clamp(50px, 7vw, 92px);
       font-weight: 600;
       line-height: 1.05;
       letter-spacing: -0.02em;
@@ -415,7 +415,7 @@
 
     .hero-stat-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 38px;
+      font-size: 44px;
       font-weight: 600;
       color: var(--accent);
       line-height: 1;
@@ -445,7 +445,7 @@
     /* ─────────────────────────────────────────
        OUTCOMES
     ───────────────────────────────────────── */
-    .outcomes { padding: 88px 0; background: var(--bg-alt); }
+    .outcomes { padding: 68px 0; background: var(--bg-alt); }
 
     .outcomes-grid {
       display: grid;
@@ -458,6 +458,7 @@
       border: 1px solid var(--border);
       border-radius: var(--rl);
       padding: 28px;
+      box-shadow: 0 2px 10px rgba(24,12,4,0.07);
       transition: all 0.18s;
       position: relative;
       overflow: hidden;
@@ -489,7 +490,7 @@
     }
     .outcome-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
+      font-size: 23px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 10px;
@@ -522,7 +523,7 @@
     /* ─────────────────────────────────────────
        SERVICES
     ───────────────────────────────────────── */
-    .services { padding: 88px 0; background: var(--bg); }
+    .services { padding: 68px 0; background: var(--bg); }
 
     .services-grid {
       display: grid;
@@ -535,14 +536,15 @@
       border: 1px solid var(--border);
       border-radius: var(--rl);
       padding: 28px;
+      box-shadow: 0 2px 10px rgba(24,12,4,0.07);
       transition: all 0.18s;
       display: flex;
       flex-direction: column;
     }
     .svc-card:hover {
       border-color: var(--accent-ring);
-      box-shadow: 0 6px 24px rgba(24,19,13,0.08);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(24,12,4,0.13);
+      transform: translateY(-3px);
     }
 
     .svc-icon {
@@ -556,7 +558,7 @@
 
     .svc-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
+      font-size: 22px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 8px;
@@ -591,7 +593,7 @@
     /* ─────────────────────────────────────────
        HOW IT WORKS
     ───────────────────────────────────────── */
-    .hiw { padding: 88px 0; background: var(--bg-alt); }
+    .hiw { padding: 68px 0; background: var(--bg-alt); }
 
     .hiw-steps {
       display: grid;
@@ -636,7 +638,7 @@
 
     .hiw-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 21px; font-weight: 600;
+      font-size: 24px; font-weight: 600;
       color: var(--text);
       margin-bottom: 10px;
     }
@@ -695,7 +697,7 @@
     /* ─────────────────────────────────────────
        ENGAGEMENT TYPES
     ───────────────────────────────────────── */
-    .engage { padding: 88px 0; background: var(--bg); }
+    .engage { padding: 68px 0; background: var(--bg); }
 
     .engage-grid {
       display: grid;
@@ -752,7 +754,7 @@
     .engage-card.featured .engage-name { color: var(--on-dark); }
 
     .engage-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-mid);
       line-height: 1.7;
       flex: 1;
@@ -807,7 +809,7 @@
     /* ─────────────────────────────────────────
        WHY AXIUM — DIFFERENTIATORS
     ───────────────────────────────────────── */
-    .why { padding: 88px 0; background: var(--bg-alt); }
+    .why { padding: 68px 0; background: var(--bg-alt); }
 
     .why-grid {
       display: grid;
@@ -844,7 +846,7 @@
 
     .why-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 21px;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 7px;
@@ -852,7 +854,7 @@
     }
 
     .why-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-mid);
       line-height: 1.72;
     }
@@ -873,7 +875,7 @@
     /* ─────────────────────────────────────────
        ABOUT + CREDENTIALS
     ───────────────────────────────────────── */
-    .about { padding: 88px 0; background: var(--bg-dark); color: var(--on-dark); }
+    .about { padding: 68px 0; background: var(--bg-dark); color: var(--on-dark); }
 
     .about-grid {
       display: grid;
@@ -891,7 +893,7 @@
 
     h2.about-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(32px, 4vw, 50px);
       font-weight: 600;
       color: var(--on-dark);
       line-height: 1.15;
@@ -915,7 +917,7 @@
     }
 
     .about-body {
-      font-size: 15px;
+      font-size: 16px;
       color: var(--on-dark-mid);
       line-height: 1.8;
     }
@@ -1033,7 +1035,7 @@
     /* ─────────────────────────────────────────
        CONTACT + APP
     ───────────────────────────────────────── */
-    .contact { padding: 88px 0; background: var(--bg); }
+    .contact { padding: 68px 0; background: var(--bg); }
 
     .contact-grid {
       display: grid;
@@ -1262,7 +1264,7 @@
     /* ─────────────────────────────────────────
        TESTIMONIALS
     ───────────────────────────────────────── */
-    .testimonials { padding: 88px 0; background: var(--bg); }
+    .testimonials { padding: 68px 0; background: var(--bg); }
 
     .testi-grid {
       display: grid;
@@ -1275,6 +1277,7 @@
       border: 1px solid var(--border);
       border-radius: var(--rl);
       padding: 30px 28px 26px;
+      box-shadow: 0 2px 10px rgba(24,12,4,0.07);
       display: flex;
       flex-direction: column;
       position: relative;
@@ -1301,7 +1304,7 @@
 
     .testi-quote {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
+      font-size: 19px;
       font-weight: 500;
       color: var(--text);
       line-height: 1.6;
