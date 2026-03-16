@@ -347,6 +347,7 @@ footer { background: var(--bg-dark); color: var(--on-dark-mid); padding: 52px 0 
 .va-fab--open .va-icon-chat { display: none; }
 .va-fab--open .va-icon-close { display: block; }
 .va-window { position: fixed; bottom: 92px; right: 24px; z-index: 200; width: 380px; max-height: 520px; background: #fff; border-radius: 16px; box-shadow: 0 12px 48px rgba(24,14,4,0.18); display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border); }
+.va-window[hidden] { display: none !important; }
 .va-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border); background: var(--bg); }
 .va-header-info { display: flex; align-items: center; gap: 10px; }
 .va-dot { width: 10px; height: 10px; border-radius: 50%; background: #25d366; flex-shrink: 0; }
