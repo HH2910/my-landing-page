@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Sampler 2 — harihars.in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; font-family: sans-serif; }
+
+    /* ─── CHROME ─── */
+    .sampler-header {
+      background: #111; color: #fff;
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid #333;
+    }
+    .sampler-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-style: italic; font-weight: 500;
+      color: #fff; margin-bottom: 8px;
+    }
+    .sampler-header p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; color: #999; line-height: 1.6;
+    }
+    .sampler-header p strong { color: #ccc; }
+
+    .sampler-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #111; border-bottom: 1px solid #2a2a2a;
+      padding: 12px 32px;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .sampler-nav span { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #666; margin-right: 4px; }
+    .sampler-nav a {
+      font-family: 'DM Sans', sans-serif;
+      color: #aaa; text-decoration: none; font-size: 12px;
+      padding: 5px 12px; border: 1px solid #333; border-radius: 20px;
+      white-space: nowrap; transition: all .2s;
+    }
+    .sampler-nav a:hover { background: #fff; color: #111; border-color: #fff; }
+
+    .divider { height: 6px; background: #0a0a0a; }
+
+    .theme-label {
+      padding: 14px 32px;
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    }
+    .tl-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 12px;
+      flex-shrink: 0;
+      background: var(--t-accent); color: #fff;
+    }
+    .tl-name {
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 14px;
+      color: #fff;
+    }
+    .tl-desc {
+      font-family: 'DM Sans', sans-serif; font-size: 11px; color: #888;
+    }
+    .tl-base {
+      margin-left: auto;
+      font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      border: 1px solid #444; color: #888;
+    }
+    .theme-label { background: #111; }
+
+    /* ─── SHARED THEME COMPONENTS ─── */
+
+    .theme-block { background: var(--t-bg); }
+
+    /* HERO */
+    .t-hero {
+      background: var(--t-dark);
+      padding: 60px 40px 0;
+      text-align: center;
+      color: var(--t-on-dark);
+      position: relative;
+    }
+    .t-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--t-on-dark-dim);
+      color: var(--t-on-dark-mid);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 24px; margin-bottom: 24px;
+    }
+    .t-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--t-accent); display: inline-block; flex-shrink: 0;
+    }
+    .t-hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600; line-height: 1.15; font-style: italic;
+      color: var(--t-on-dark);
+      margin-bottom: 18px; max-width: 680px; margin-left: auto; margin-right: auto;
+    }
+    .t-hero p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; line-height: 1.75;
+      color: var(--t-on-dark-mid);
+      max-width: 540px; margin: 0 auto 32px;
+    }
+    .t-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .t-btn {
+      display: inline-block;
+      background: var(--t-accent);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 600;
+      padding: 14px 30px; border-radius: 7px;
+      text-decoration: none; letter-spacing: .03em;
+      transition: opacity .2s;
+    }
+    .t-btn:hover { opacity: .85; }
+    .t-btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--t-on-dark-dim);
+      color: var(--t-on-dark-mid);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 500;
+      padding: 14px 30px; border-radius: 7px;
+      text-decoration: none; transition: all .2s;
+    }
+    .t-btn-ghost:hover { border-color: var(--t-on-dark-mid); color: var(--t-on-dark); }
+
+    .t-stats {
+      display: flex; justify-content: center;
+      border-top: 1px solid var(--t-on-dark-dim);
+      margin-top: 44px;
+    }
+    .t-stat {
+      flex: 1; max-width: 150px;
+      padding: 24px 16px; text-align: center;
+      border-right: 1px solid var(--t-on-dark-dim);
+    }
+    .t-stat:last-child { border-right: none; }
+    .t-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px; font-weight: 600;
+      color: var(--t-on-dark); line-height: 1;
+    }
+    .t-stat-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      margin-top: 7px; color: var(--t-on-dark-mid);
+    }
+
+    /* BODY */
+    .t-body {
+      padding: 52px 40px 0;
+      max-width: 1000px; margin: 0 auto;
+    }
+    .t-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--t-accent); font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .t-section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 600; line-height: 1.18;
+      color: var(--t-text); margin-bottom: 10px;
+    }
+    .t-section-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; line-height: 1.75;
+      color: var(--t-text-mid); margin-bottom: 36px;
+      max-width: 560px;
+    }
+    .t-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px; margin-bottom: 40px;
+    }
+    .t-card {
+      background: var(--t-bg-alt);
+      border: 1px solid var(--t-border);
+      border-radius: 12px; padding: 28px;
+      position: relative; overflow: hidden;
+    }
+    .t-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--t-accent);
+      opacity: .6;
+    }
+    .t-card-icon { font-size: 26px; margin-bottom: 14px; }
+    .t-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-weight: 600;
+      color: var(--t-text); margin-bottom: 8px;
+    }
+    .t-card p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; line-height: 1.65;
+      color: var(--t-text-mid);
+    }
+    .t-tag {
+      display: inline-block;
+      background: var(--t-accent-pale);
+      color: var(--t-accent);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 600; letter-spacing: .06em;
+      padding: 4px 10px; border-radius: 4px;
+      margin-top: 14px; text-transform: uppercase;
+    }
+
+    /* CTA */
+    .t-cta {
+      background: var(--t-dark);
+      margin-top: 40px;
+      padding: 40px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 28px; flex-wrap: wrap;
+    }
+    .t-cta-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-style: italic;
+      color: var(--t-on-dark); margin-bottom: 6px;
+    }
+    .t-cta-text p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; color: var(--t-on-dark-mid);
+    }
+
+    /* ACCENT SWATCH STRIP */
+    .t-swatch {
+      background: var(--t-bg-alt);
+      border-top: 1px solid var(--t-border);
+      padding: 20px 40px;
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .t-swatch-item { display: flex; align-items: center; gap: 10px; }
+    .t-swatch-box {
+      width: 36px; height: 36px; border-radius: 6px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .t-swatch-info { }
+    .t-swatch-name {
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
+      color: var(--t-text);
+    }
+    .t-swatch-hex {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      color: var(--t-text-mid); letter-spacing: .06em;
+    }
+    .t-swatch-sep {
+      font-family: 'DM Sans', sans-serif; font-size: 10px;
+      color: var(--t-text-mid); margin-left: auto;
+      font-style: italic;
+    }
+
+
+    /* ═══════════════════════════════════════
+       6 NEW THEMES
+       All: Cormorant Garamond + DM Sans
+    ═══════════════════════════════════════ */
+
+    /*
+      A — Royal Blue + Vivid Cobalt
+          Inspired by Theme 1 (Slate Blue) — same dark family,
+          accent dialled up from muted slate to electric cobalt.
+          Clean, confident, modern-professional.
+    */
+    .theme-a {
+      --t-bg:          #f6f9ff;
+      --t-bg-alt:      #eaf0fd;
+      --t-dark:        #0f2461;
+      --t-text:        #0f2461;
+      --t-text-mid:    #3d5080;
+      --t-accent:      #1a6ee8;
+      --t-accent-pale: rgba(26,110,232,.10);
+      --t-border:      #c2d0f0;
+      --t-on-dark:     rgba(236,244,255,.96);
+      --t-on-dark-mid: rgba(236,244,255,.66);
+      --t-on-dark-dim: rgba(236,244,255,.20);
+    }
+
+    /*
+      B — Deep Navy + Vivid Saffron Gold
+          Inspired by Theme 2 (Navy + Champagne Gold) — same navy,
+          gold accent pushed from muted champagne to vivid saffron.
+          Premium, distinctive, never seen on Indian CA/valuer sites.
+    */
+    .theme-b {
+      --t-bg:          #fffcf5;
+      --t-bg-alt:      #fef4d6;
+      --t-dark:        #0c1c3a;
+      --t-text:        #0c1c3a;
+      --t-text-mid:    #445070;
+      --t-accent:      #d08b00;
+      --t-accent-pale: rgba(208,139,0,.12);
+      --t-border:      #e8d9a8;
+      --t-on-dark:     rgba(255,250,232,.96);
+      --t-on-dark-mid: rgba(255,250,232,.65);
+      --t-on-dark-dim: rgba(255,250,232,.20);
+    }
+
+    /*
+      C — Midnight Indigo + Vivid Teal
+          Hybrid of Theme 1 (blue family) + Theme 6 (teal) —
+          the dark is shifted from navy toward indigo, accent is vivid teal.
+          Sophisticated, calm, distinctive.
+    */
+    .theme-c {
+      --t-bg:          #f4f8fb;
+      --t-bg-alt:      #e4f2f4;
+      --t-dark:        #1a1e48;
+      --t-text:        #1a1e48;
+      --t-text-mid:    #3a4870;
+      --t-accent:      #0596a0;
+      --t-accent-pale: rgba(5,150,160,.10);
+      --t-border:      #bcd8de;
+      --t-on-dark:     rgba(232,246,248,.96);
+      --t-on-dark-mid: rgba(232,246,248,.65);
+      --t-on-dark-dim: rgba(232,246,248,.20);
+    }
+
+    /*
+      D — Deep Navy + Vivid Emerald
+          Theme 2 dark (navy) + completely new accent — emerald green.
+          Trustworthy + fresh. Rarely used in valuation but highly legible.
+    */
+    .theme-d {
+      --t-bg:          #f4faf6;
+      --t-bg-alt:      #e0f4e8;
+      --t-dark:        #0e2040;
+      --t-text:        #0e2040;
+      --t-text-mid:    #3a5858;
+      --t-accent:      #07884a;
+      --t-accent-pale: rgba(7,136,74,.10);
+      --t-border:      #b4d8c4;
+      --t-on-dark:     rgba(228,248,236,.96);
+      --t-on-dark-mid: rgba(228,248,236,.65);
+      --t-on-dark-dim: rgba(228,248,236,.20);
+    }
+
+    /*
+      E — Rich Teal + Warm Brass Gold
+          Inspired by Theme 6 (Teal) — same dark teal bg,
+          accent switched from teal-on-teal to warm brass/gold.
+          Feels premium, architectural, property-appropriate.
+    */
+    .theme-e {
+      --t-bg:          #f3faf8;
+      --t-bg-alt:      #e2f2ee;
+      --t-dark:        #0a3030;
+      --t-text:        #0a3030;
+      --t-text-mid:    #3a5858;
+      --t-accent:      #c07820;
+      --t-accent-pale: rgba(192,120,32,.11);
+      --t-border:      #b0d4cc;
+      --t-on-dark:     rgba(228,248,244,.96);
+      --t-on-dark-mid: rgba(228,248,244,.65);
+      --t-on-dark-dim: rgba(228,248,244,.20);
+    }
+
+    /*
+      F — Slate Blue + Vivid Vermillion
+          Theme 1 dark (slate) + a bold warm accent.
+          Most distinctive of the six — the unexpected warm-cool contrast
+          makes every CTA button and tag visually arresting.
+    */
+    .theme-f {
+      --t-bg:          #fdf8f6;
+      --t-bg-alt:      #faede8;
+      --t-dark:        #1c2f50;
+      --t-text:        #1c2f50;
+      --t-text-mid:    #4a5870;
+      --t-accent:      #c83c18;
+      --t-accent-pale: rgba(200,60,24,.10);
+      --t-border:      #e4c8bc;
+      --t-on-dark:     rgba(252,244,240,.96);
+      --t-on-dark-mid: rgba(252,244,240,.65);
+      --t-on-dark-dim: rgba(252,244,240,.20);
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="sampler-header">
+  <h1>Theme Sampler — Round 2</h1>
+  <p>All six use <strong>Cormorant Garamond + DM Sans</strong> (Theme 1 fonts). Only the colour changes.<br>
+  Inspired by your favourites: <strong>1 (Slate Blue) · 2 (Navy Gold) · 6 (Teal)</strong> — each pushed brighter and more distinctive.</p>
+</div>
+
+<nav class="sampler-nav">
+  <span>Jump:</span>
+  <a href="#ta">A · Royal Blue + Cobalt</a>
+  <a href="#tb">B · Navy + Saffron Gold</a>
+  <a href="#tc">C · Indigo + Teal</a>
+  <a href="#td">D · Navy + Emerald</a>
+  <a href="#te">E · Teal + Brass Gold</a>
+  <a href="#tf">F · Slate + Vermillion</a>
+</nav>
+
+
+<!-- ══════════ THEME A ══════════ -->
+<div class="divider"></div>
+<div id="ta">
+  <div class="theme-label" style="--t-accent:#1a6ee8;">
+    <div class="tl-num" style="--t-accent:#1a6ee8;">A</div>
+    <div>
+      <div class="tl-name">Royal Blue + Vivid Cobalt</div>
+      <div class="tl-desc">Dark: deep royal navy &nbsp;·&nbsp; Accent: electric cobalt blue &nbsp;·&nbsp; Background: cool white</div>
+    </div>
+    <span class="tl-base">Based on Theme 1</span>
+  </div>
+  <div class="theme-block theme-a">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#0f2461;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#0f2461</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#1a6ee8;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#1a6ee8</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#f6f9ff; border:1px solid #c2d0f0;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#f6f9ff</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#eaf0fd;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#eaf0fd</div></div></div>
+      <div class="t-swatch-sep">Same dark direction as Theme 1 — accent much brighter &amp; bolder</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ THEME B ══════════ -->
+<div class="divider"></div>
+<div id="tb">
+  <div class="theme-label" style="--t-accent:#d08b00;">
+    <div class="tl-num" style="--t-accent:#d08b00;">B</div>
+    <div>
+      <div class="tl-name">Deep Navy + Vivid Saffron Gold</div>
+      <div class="tl-desc">Dark: deep midnight navy &nbsp;·&nbsp; Accent: vivid saffron/amber &nbsp;·&nbsp; Background: warm cream white</div>
+    </div>
+    <span class="tl-base">Based on Theme 2</span>
+  </div>
+  <div class="theme-block theme-b">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#0c1c3a;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#0c1c3a</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#d08b00;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#d08b00</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#fffcf5; border:1px solid #e8d9a8;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#fffcf5</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#fef4d6;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#fef4d6</div></div></div>
+      <div class="t-swatch-sep">Theme 2 navy + accent pushed from champagne → saffron</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ THEME C ══════════ -->
+<div class="divider"></div>
+<div id="tc">
+  <div class="theme-label" style="--t-accent:#0596a0;">
+    <div class="tl-num" style="--t-accent:#0596a0;">C</div>
+    <div>
+      <div class="tl-name">Midnight Indigo + Vivid Teal</div>
+      <div class="tl-desc">Dark: deep indigo (bluer than Theme 6) &nbsp;·&nbsp; Accent: vivid ocean teal &nbsp;·&nbsp; Background: cool aqua white</div>
+    </div>
+    <span class="tl-base">Hybrid 1 + 6</span>
+  </div>
+  <div class="theme-block theme-c">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#1a1e48;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#1a1e48</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#0596a0;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#0596a0</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#f4f8fb; border:1px solid #bcd8de;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#f4f8fb</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#e4f2f4;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#e4f2f4</div></div></div>
+      <div class="t-swatch-sep">Indigo dark from Theme 1 family + vivid teal from Theme 6</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ THEME D ══════════ -->
+<div class="divider"></div>
+<div id="td">
+  <div class="theme-label" style="--t-accent:#07884a;">
+    <div class="tl-num" style="--t-accent:#07884a;">D</div>
+    <div>
+      <div class="tl-name">Deep Navy + Vivid Emerald</div>
+      <div class="tl-desc">Dark: deep navy (Theme 2 family) &nbsp;·&nbsp; Accent: vivid emerald green &nbsp;·&nbsp; Background: fresh cool green-white</div>
+    </div>
+    <span class="tl-base">Based on Theme 2</span>
+  </div>
+  <div class="theme-block theme-d">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#0e2040;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#0e2040</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#07884a;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#07884a</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#f4faf6; border:1px solid #b4d8c4;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#f4faf6</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#e0f4e8;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#e0f4e8</div></div></div>
+      <div class="t-swatch-sep">Navy + emerald — fresh, confident, rarely used on valuer sites</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ THEME E ══════════ -->
+<div class="divider"></div>
+<div id="te">
+  <div class="theme-label" style="--t-accent:#c07820;">
+    <div class="tl-num" style="--t-accent:#c07820;">E</div>
+    <div>
+      <div class="tl-name">Rich Teal + Warm Brass Gold</div>
+      <div class="tl-desc">Dark: deep forest teal &nbsp;·&nbsp; Accent: warm brass/gold &nbsp;·&nbsp; Background: soft aqua white</div>
+    </div>
+    <span class="tl-base">Based on Theme 6</span>
+  </div>
+  <div class="theme-block theme-e">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#0a3030;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#0a3030</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#c07820;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#c07820</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#f3faf8; border:1px solid #b0d4cc;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#f3faf8</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#e2f2ee;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#e2f2ee</div></div></div>
+      <div class="t-swatch-sep">Theme 6 teal + warm brass — premium, architectural feel</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════ THEME F ══════════ -->
+<div class="divider"></div>
+<div id="tf">
+  <div class="theme-label" style="--t-accent:#c83c18;">
+    <div class="tl-num" style="--t-accent:#c83c18;">F</div>
+    <div>
+      <div class="tl-name">Slate Blue + Vivid Vermillion</div>
+      <div class="tl-desc">Dark: slate navy (Theme 1 family) &nbsp;·&nbsp; Accent: vivid warm red-orange &nbsp;·&nbsp; Background: warm off-white</div>
+    </div>
+    <span class="tl-base">Based on Theme 1</span>
+  </div>
+  <div class="theme-block theme-f">
+    <div class="t-hero">
+      <div class="t-badge"><span class="t-badge-dot"></span>IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days — personally handled by Harihar.S.</p>
+      <div class="t-btns">
+        <a href="#" class="t-btn">Get Your Valuation Report →</a>
+        <a href="#" class="t-btn-ghost">Call Now</a>
+      </div>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-eyebrow">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">IBBI &amp; Income Tax Registered reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card"><div class="t-card-icon">📊</div><h3>Income Tax / Capital Gains</h3><p>Section 50C and Section 55 valuations. Accepted by the IT Department on first submission.</p><span class="t-tag">Capital Gains</span></div>
+        <div class="t-card"><div class="t-card-icon">🏠</div><h3>Home Loan / Bank Valuation</h3><p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p><span class="t-tag">Bank Approved</span></div>
+        <div class="t-card"><div class="t-card-icon">✈️</div><h3>Visa Documentation</h3><p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p><span class="t-tag">Digital Delivery</span></div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text"><h3>Ready to get your valuation report?</h3><p>Harihar.S reviews every inquiry personally. Quote within 24 hours.</p></div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-swatch">
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#1c2f50;"></div><div class="t-swatch-info"><div class="t-swatch-name">Dark / Header</div><div class="t-swatch-hex">#1c2f50</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#c83c18;"></div><div class="t-swatch-info"><div class="t-swatch-name">Accent</div><div class="t-swatch-hex">#c83c18</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#fdf8f6; border:1px solid #e4c8bc;"></div><div class="t-swatch-info"><div class="t-swatch-name">Background</div><div class="t-swatch-hex">#fdf8f6</div></div></div>
+      <div class="t-swatch-item"><div class="t-swatch-box" style="background:#faede8;"></div><div class="t-swatch-info"><div class="t-swatch-name">Card BG</div><div class="t-swatch-hex">#faede8</div></div></div>
+      <div class="t-swatch-sep">Most distinctive — cool-warm contrast makes every CTA pop</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider" style="height:32px;"></div>
+
+</body>
+</html>

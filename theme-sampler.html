@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Sampler — harihars.in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ─── SAMPLER CHROME ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0f0f0;
+      font-family: sans-serif;
+    }
+
+    .sampler-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #111; color: #fff;
+      padding: 14px 24px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .sampler-nav strong { font-size: 14px; margin-right: 8px; }
+    .sampler-nav a {
+      color: #ccc; text-decoration: none; font-size: 12px;
+      padding: 4px 10px; border: 1px solid #444; border-radius: 20px;
+      white-space: nowrap; transition: all .2s;
+    }
+    .sampler-nav a:hover { background: #fff; color: #111; }
+
+    .theme-label {
+      background: #111; color: #fff;
+      padding: 10px 24px;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .theme-label .tl-num {
+      background: #fff; color: #111;
+      width: 24px; height: 24px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 12px; flex-shrink: 0;
+    }
+    .theme-label .tl-name { font-weight: 700; font-size: 13px; }
+    .theme-label .tl-desc { color: #999; font-size: 11px; }
+    .tl-current {
+      margin-left: auto; background: #e8f5e9; color: #2e7d32;
+      padding: 3px 10px; border-radius: 20px; font-size: 10px;
+      font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* ─── SHARED THEME BLOCK LAYOUT ─── */
+    .theme-block {
+      background: var(--t-bg);
+      padding: 0 0 48px;
+    }
+
+    /* hero */
+    .t-hero {
+      background: var(--t-dark);
+      padding: 56px 40px 52px;
+      text-align: center;
+      color: var(--t-on-dark);
+    }
+    .t-badge {
+      display: inline-block;
+      border: 1px solid var(--t-on-dark-dim);
+      color: var(--t-on-dark-mid);
+      font-family: var(--t-sans);
+      font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .t-hero h1 {
+      font-family: var(--t-serif);
+      font-size: clamp(26px, 4vw, 40px);
+      font-weight: 600; line-height: 1.18;
+      color: var(--t-on-dark);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .t-hero p {
+      font-family: var(--t-sans);
+      font-size: 15px; line-height: 1.7;
+      color: var(--t-on-dark-mid);
+      max-width: 560px; margin: 0 auto 28px;
+    }
+    .t-btn {
+      display: inline-block;
+      background: var(--t-accent);
+      color: #fff;
+      font-family: var(--t-sans);
+      font-size: 13px; font-weight: 600;
+      padding: 13px 28px; border-radius: 6px;
+      text-decoration: none; letter-spacing: .04em;
+      transition: opacity .2s;
+    }
+    .t-btn:hover { opacity: .85; }
+    .t-btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--t-on-dark-dim);
+      color: var(--t-on-dark-mid);
+      font-family: var(--t-sans);
+      font-size: 13px; font-weight: 500;
+      padding: 13px 28px; border-radius: 6px;
+      text-decoration: none; margin-left: 12px;
+      transition: all .2s;
+    }
+    .t-btn-ghost:hover { background: rgba(255,255,255,.08); }
+
+    /* stats */
+    .t-stats {
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid var(--t-on-dark-dim);
+      margin-top: 40px;
+    }
+    .t-stat {
+      flex: 1; max-width: 160px;
+      padding: 22px 16px;
+      text-align: center;
+      border-right: 1px solid var(--t-on-dark-dim);
+    }
+    .t-stat:last-child { border-right: none; }
+    .t-stat-num {
+      font-family: var(--t-serif);
+      font-size: 28px; font-weight: 600;
+      color: var(--t-on-dark);
+      line-height: 1;
+    }
+    .t-stat-label {
+      font-family: var(--t-sans);
+      font-size: 11px; letter-spacing: .1em;
+      text-transform: uppercase; margin-top: 6px;
+      color: var(--t-on-dark-mid);
+    }
+
+    /* body content */
+    .t-body { padding: 48px 40px 0; max-width: 960px; margin: 0 auto; }
+    .t-section-label {
+      font-family: var(--t-sans);
+      font-size: 10px; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--t-accent); font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .t-section-title {
+      font-family: var(--t-serif);
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600; line-height: 1.2;
+      color: var(--t-text);
+      margin-bottom: 8px;
+    }
+    .t-section-sub {
+      font-family: var(--t-sans);
+      font-size: 14px; line-height: 1.7;
+      color: var(--t-text-mid);
+      margin-bottom: 32px;
+    }
+    .t-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px; margin-bottom: 32px;
+    }
+    .t-card {
+      background: var(--t-bg-alt);
+      border: 1px solid var(--t-border);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .t-card-icon {
+      font-size: 24px; margin-bottom: 12px;
+    }
+    .t-card h3 {
+      font-family: var(--t-serif);
+      font-size: 18px; font-weight: 600;
+      color: var(--t-text); margin-bottom: 8px;
+    }
+    .t-card p {
+      font-family: var(--t-sans);
+      font-size: 13px; line-height: 1.65;
+      color: var(--t-text-mid);
+    }
+    .t-tag {
+      display: inline-block;
+      background: var(--t-accent-pale);
+      color: var(--t-accent);
+      font-family: var(--t-sans);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 10px; border-radius: 4px;
+      margin-top: 12px; letter-spacing: .04em;
+    }
+
+    /* cta strip */
+    .t-cta {
+      background: var(--t-dark);
+      margin: 32px 0 0;
+      padding: 36px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .t-cta-text h3 {
+      font-family: var(--t-serif);
+      font-size: 22px; font-style: italic;
+      color: var(--t-on-dark); margin-bottom: 6px;
+    }
+    .t-cta-text p {
+      font-family: var(--t-sans);
+      font-size: 13px; color: var(--t-on-dark-mid);
+    }
+
+    /* font specimen strip */
+    .t-fonts {
+      background: var(--t-bg-alt);
+      border-top: 1px solid var(--t-border);
+      padding: 20px 40px;
+      display: flex; gap: 40px; flex-wrap: wrap;
+      max-width: 960px; margin: 0 auto;
+    }
+    .t-font-item { }
+    .t-font-label {
+      font-family: var(--t-sans);
+      font-size: 10px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--t-text-mid);
+      margin-bottom: 4px;
+    }
+    .t-font-sample-serif {
+      font-family: var(--t-serif);
+      font-size: 20px; font-weight: 600; font-style: italic;
+      color: var(--t-text);
+    }
+    .t-font-sample-sans {
+      font-family: var(--t-sans);
+      font-size: 14px; font-weight: 400;
+      color: var(--t-text-mid);
+    }
+
+    /* ═══════════════════════════════════════
+       THEME DEFINITIONS
+    ═══════════════════════════════════════ */
+
+    /* THEME 1 — Slate Blue (Current) */
+    .theme-1 {
+      --t-serif: 'Cormorant Garamond', Georgia, serif;
+      --t-sans:  'DM Sans', system-ui, sans-serif;
+      --t-bg:         #fafbff;
+      --t-bg-alt:     #eef1f8;
+      --t-dark:       #1e3058;
+      --t-text:       #1a2540;
+      --t-text-mid:   #3d4f6e;
+      --t-accent:     #2c4a7c;
+      --t-accent-pale: rgba(44,74,124,.10);
+      --t-border:     #cdd5e8;
+      --t-on-dark:    rgba(240,245,255,.94);
+      --t-on-dark-mid: rgba(240,245,255,.68);
+      --t-on-dark-dim: rgba(240,245,255,.22);
+    }
+
+    /* THEME 2 — Deep Navy + Champagne Gold */
+    .theme-2 {
+      --t-serif: 'Playfair Display', Georgia, serif;
+      --t-sans:  'Lato', system-ui, sans-serif;
+      --t-bg:         #f9f7f2;
+      --t-bg-alt:     #f0ece0;
+      --t-dark:       #0d1f3c;
+      --t-text:       #0d1f3c;
+      --t-text-mid:   #4a5568;
+      --t-accent:     #9a7b3c;
+      --t-accent-pale: rgba(154,123,60,.12);
+      --t-border:     #ddd5c0;
+      --t-on-dark:    rgba(253,247,234,.96);
+      --t-on-dark-mid: rgba(253,247,234,.68);
+      --t-on-dark-dim: rgba(253,247,234,.22);
+    }
+
+    /* THEME 3 — Charcoal + Forest Green */
+    .theme-3 {
+      --t-serif: 'Merriweather', Georgia, serif;
+      --t-sans:  'Inter', system-ui, sans-serif;
+      --t-bg:         #fafaf8;
+      --t-bg-alt:     #f0f2ee;
+      --t-dark:       #1c2b1e;
+      --t-text:       #1c2b1e;
+      --t-text-mid:   #4a5c4a;
+      --t-accent:     #2d6a4f;
+      --t-accent-pale: rgba(45,106,79,.10);
+      --t-border:     #c8d5c8;
+      --t-on-dark:    rgba(240,248,240,.96);
+      --t-on-dark-mid: rgba(240,248,240,.68);
+      --t-on-dark-dim: rgba(240,248,240,.22);
+    }
+
+    /* THEME 4 — Warm Burgundy / Deep Red */
+    .theme-4 {
+      --t-serif: 'EB Garamond', Georgia, serif;
+      --t-sans:  'Nunito Sans', system-ui, sans-serif;
+      --t-bg:         #fdf8f5;
+      --t-bg-alt:     #f5ece6;
+      --t-dark:       #3b1616;
+      --t-text:       #2a1010;
+      --t-text-mid:   #6b4040;
+      --t-accent:     #8b2020;
+      --t-accent-pale: rgba(139,32,32,.10);
+      --t-border:     #e0c8c0;
+      --t-on-dark:    rgba(253,242,238,.96);
+      --t-on-dark-mid: rgba(253,242,238,.68);
+      --t-on-dark-dim: rgba(253,242,238,.22);
+    }
+
+    /* THEME 5 — Black + Warm Gold (Premium) */
+    .theme-5 {
+      --t-serif: 'Libre Baskerville', Georgia, serif;
+      --t-sans:  'Source Sans 3', system-ui, sans-serif;
+      --t-bg:         #ffffff;
+      --t-bg-alt:     #f7f5f0;
+      --t-dark:       #111111;
+      --t-text:       #111111;
+      --t-text-mid:   #555555;
+      --t-accent:     #b08040;
+      --t-accent-pale: rgba(176,128,64,.10);
+      --t-border:     #e0dbd0;
+      --t-on-dark:    rgba(255,252,244,.96);
+      --t-on-dark-mid: rgba(255,252,244,.68);
+      --t-on-dark-dim: rgba(255,252,244,.22);
+    }
+
+    /* THEME 6 — Warm Teal */
+    .theme-6 {
+      --t-serif: 'Cormorant Garamond', Georgia, serif;
+      --t-sans:  'Work Sans', system-ui, sans-serif;
+      --t-bg:         #f4fafa;
+      --t-bg-alt:     #e4f0f0;
+      --t-dark:       #0e3838;
+      --t-text:       #0e3838;
+      --t-text-mid:   #3a6060;
+      --t-accent:     #0d7a72;
+      --t-accent-pale: rgba(13,122,114,.10);
+      --t-border:     #b8d8d8;
+      --t-on-dark:    rgba(236,252,252,.96);
+      --t-on-dark-mid: rgba(236,252,252,.68);
+      --t-on-dark-dim: rgba(236,252,252,.22);
+    }
+
+    /* THEME 7 — Stone + Terracotta */
+    .theme-7 {
+      --t-serif: 'Crimson Pro', Georgia, serif;
+      --t-sans:  'Work Sans', system-ui, sans-serif;
+      --t-bg:         #faf7f4;
+      --t-bg-alt:     #f0e8df;
+      --t-dark:       #2c1f14;
+      --t-text:       #2c1f14;
+      --t-text-mid:   #6b5040;
+      --t-accent:     #b04c20;
+      --t-accent-pale: rgba(176,76,32,.10);
+      --t-border:     #dcc8b8;
+      --t-on-dark:    rgba(255,248,240,.96);
+      --t-on-dark-mid: rgba(255,248,240,.68);
+      --t-on-dark-dim: rgba(255,248,240,.22);
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sampler-nav">
+  <strong>Jump to theme:</strong>
+  <a href="#t1">1 · Slate Blue (Current)</a>
+  <a href="#t2">2 · Navy Gold</a>
+  <a href="#t3">3 · Forest Green</a>
+  <a href="#t4">4 · Burgundy</a>
+  <a href="#t5">5 · Black &amp; Gold</a>
+  <a href="#t6">6 · Teal</a>
+  <a href="#t7">7 · Terracotta</a>
+</nav>
+
+
+<!-- ═══ THEME 1 ═══ -->
+<div id="t1">
+  <div class="theme-label">
+    <div class="tl-num">1</div>
+    <div>
+      <div class="tl-name">Slate Blue</div>
+      <div class="tl-desc">Cormorant Garamond (headings) &nbsp;·&nbsp; DM Sans (body)</div>
+    </div>
+    <span class="tl-current">Current Site</span>
+  </div>
+  <div class="theme-block theme-1">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Cormorant Garamond — Elegant, editorial</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">DM Sans — Clean, modern, highly legible</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 2 ═══ -->
+<div id="t2">
+  <div class="theme-label">
+    <div class="tl-num">2</div>
+    <div>
+      <div class="tl-name">Deep Navy + Champagne Gold</div>
+      <div class="tl-desc">Playfair Display (headings) &nbsp;·&nbsp; Lato (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-2">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Playfair Display — Classic, authoritative</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Lato — Friendly, open, very readable</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 3 ═══ -->
+<div id="t3">
+  <div class="theme-label">
+    <div class="tl-num">3</div>
+    <div>
+      <div class="tl-name">Charcoal + Forest Green</div>
+      <div class="tl-desc">Merriweather (headings) &nbsp;·&nbsp; Inter (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-3">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Merriweather — Solid, trustworthy, serious</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Inter — Sharp, neutral, tech-professional</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 4 ═══ -->
+<div id="t4">
+  <div class="theme-label">
+    <div class="tl-num">4</div>
+    <div>
+      <div class="tl-name">Warm Burgundy</div>
+      <div class="tl-desc">EB Garamond (headings) &nbsp;·&nbsp; Nunito Sans (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-4">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">EB Garamond — Warm, classical, refined</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Nunito Sans — Rounded, approachable, clear</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 5 ═══ -->
+<div id="t5">
+  <div class="theme-label">
+    <div class="tl-num">5</div>
+    <div>
+      <div class="tl-name">Black + Warm Gold (Premium)</div>
+      <div class="tl-desc">Libre Baskerville (headings) &nbsp;·&nbsp; Source Sans 3 (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-5">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Libre Baskerville — Strong, traditional, credible</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Source Sans 3 — Neutral, professional, wide support</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 6 ═══ -->
+<div id="t6">
+  <div class="theme-label">
+    <div class="tl-num">6</div>
+    <div>
+      <div class="tl-name">Deep Teal</div>
+      <div class="tl-desc">Cormorant Garamond (headings) &nbsp;·&nbsp; Work Sans (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-6">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Cormorant Garamond — Elegant, editorial</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Work Sans — Geometric, modern, clean</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ THEME 7 ═══ -->
+<div id="t7">
+  <div class="theme-label">
+    <div class="tl-num">7</div>
+    <div>
+      <div class="tl-name">Stone + Terracotta</div>
+      <div class="tl-desc">Crimson Pro (headings) &nbsp;·&nbsp; Work Sans (body)</div>
+    </div>
+  </div>
+  <div class="theme-block theme-7">
+    <div class="t-hero">
+      <div class="t-badge">IBBI &amp; Income Tax Registered Valuer &nbsp;·&nbsp; Chennai</div>
+      <h1>Property Valuation in Chennai —<br>For Income Tax, Bank Loans &amp; Visa</h1>
+      <p>IBBI &amp; Income Tax Registered Valuer. Reports accepted by all major banks, Income Tax authorities, and visa consulates. Certified valuation in 2–3 working days.</p>
+      <a href="#" class="t-btn">Get Your Valuation Report →</a>
+      <a href="#" class="t-btn-ghost">Call Now</a>
+      <div class="t-stats">
+        <div class="t-stat"><div class="t-stat-num">20+</div><div class="t-stat-label">Years</div></div>
+        <div class="t-stat"><div class="t-stat-num">500+</div><div class="t-stat-label">Assignments</div></div>
+        <div class="t-stat"><div class="t-stat-num">10+</div><div class="t-stat-label">Banks Accepted</div></div>
+        <div class="t-stat"><div class="t-stat-num">2–3</div><div class="t-stat-label">Day Turnaround</div></div>
+      </div>
+    </div>
+    <div class="t-body">
+      <div class="t-section-label">Individual Services</div>
+      <div class="t-section-title">What do you need a valuation for?</div>
+      <div class="t-section-sub">Registered valuer reports for income tax, home loans, visa applications, and inheritance.</div>
+      <div class="t-cards">
+        <div class="t-card">
+          <div class="t-card-icon">📊</div>
+          <h3>Income Tax / Capital Gains</h3>
+          <p>Section 50C and Section 55 valuations accepted by the IT Department on first submission.</p>
+          <span class="t-tag">Capital Gains</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏠</div>
+          <h3>Home Loan / Bank Valuation</h3>
+          <p>Accepted by SBI, Canara Bank, PNB, UCO Bank, Repco Housing, HUDCO, TIIC &amp; J&amp;K Bank.</p>
+          <span class="t-tag">Bank Approved</span>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">✈️</div>
+          <h3>Visa Documentation</h3>
+          <p>Digital property value certificate for Canada, UK, Australia, US, Schengen &amp; UAE visa.</p>
+          <span class="t-tag">Digital Delivery</span>
+        </div>
+      </div>
+    </div>
+    <div class="t-cta">
+      <div class="t-cta-text">
+        <h3>Ready to get your valuation report?</h3>
+        <p>Harihar.S reviews every inquiry personally and responds within 24 hours.</p>
+      </div>
+      <a href="#" class="t-btn">Request a Consultation →</a>
+    </div>
+    <div class="t-fonts">
+      <div class="t-font-item">
+        <div class="t-font-label">Heading font</div>
+        <div class="t-font-sample-serif">Crimson Pro — Warm, humanist, flowing</div>
+      </div>
+      <div class="t-font-item">
+        <div class="t-font-label">Body font</div>
+        <div class="t-font-sample-sans">Work Sans — Geometric, modern, clean</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
