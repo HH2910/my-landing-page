@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harihar.S — Chartered Engineer & Registered Valuer | Axium Valuation Services</title>
+  <meta name="description" content="Independent valuation and certification services for M&A, bank finance, PLI, EPCG, and regulatory compliance. IBBI Registered. 20+ years. Pan-India.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --bg:           #fffcf7;
+      --bg-alt:       #fdefd5;
+      --bg-dark:      #1c1007;
+      --bg-dark2:     #231508;
+      --text:         #180e04;
+      --text-mid:     #3e2a18;
+      --text-light:   #7a5a42;
+      --on-dark:      rgba(255,252,245,0.93);
+      --on-dark-mid:  rgba(255,252,245,0.68);
+      --on-dark-dim:  rgba(255,252,245,0.38);
+      --accent:       #d4500c;
+      --accent-h:     #f06020;
+      --accent-pale:  rgba(212,80,12,0.08);
+      --accent-ring:  rgba(212,80,12,0.22);
+      --border:       #edd9c0;
+      --border-dark:  #3d1c08;
+      --green:        #25D366;
+      --max:          1100px;
+      --max-text:     680px;
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    @media (max-width: 680px) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+    @media (max-width: 680px) { .wrap { padding: 0 20px; } }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 64px;
+      display: flex; align-items: center;
+      background: rgba(255,252,247,0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      border-bottom-color: var(--border);
+      box-shadow: 0 1px 24px rgba(24,14,4,0.07);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 40px;
+      width: 100%;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 11px;
+      flex-shrink: 0;
+    }
+    .nav-monogram {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 700; font-style: italic;
+      color: #fff; letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+    .nav-brand-text { line-height: 1.2; }
+    .nav-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 600;
+      color: var(--text); letter-spacing: 0.01em;
+    }
+    .nav-brand-sub {
+      font-size: 10px; font-weight: 400;
+      color: var(--text-light); letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px; font-weight: 500;
+      color: var(--text-mid);
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 100%;
+      height: 1px; background: var(--accent);
+      transition: right 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-links a:hover::after { right: 0; }
+    .nav-cta {
+      background: var(--accent); color: #fff !important;
+      padding: 8px 18px; border-radius: 6px;
+      font-size: 13px !important; font-weight: 600 !important;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--accent-h) !important; transform: translateY(-1px); }
+
+    .nav-ham {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-ham span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--text); border-radius: 2px; transition: all 0.2s;
+    }
+    .nav-drawer {
+      display: none; position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: rgba(255,252,247,0.98); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 20px; flex-direction: column; gap: 0;
+      z-index: 199;
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 15px; font-weight: 500;
+      color: var(--text-mid);
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.15s;
+    }
+    .nav-drawer a:hover { color: var(--accent); }
+
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .nav-ham { display: flex; }
+      .nav-inner { padding: 0 20px; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 148px 40px 100px;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 60px; align-items: center;
+    }
+    .hero-left {}
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 32px;
+      animation: fadeUp 0.5s ease both;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-quote {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px; font-weight: 300; font-style: italic;
+      color: var(--text-light); line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 28px;
+      border-left: 2px solid var(--accent);
+      padding-left: 20px;
+      animation: fadeUp 0.55s 0.07s ease both;
+    }
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 10vw, 128px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.14s ease both;
+    }
+    .hero-name em {
+      display: block;
+      font-style: italic; color: var(--accent);
+      font-size: 0.65em; letter-spacing: 0.01em;
+    }
+    .hero-sub {
+      font-size: 14px; font-weight: 400; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-light);
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.21s ease both;
+    }
+    .hero-sub span { color: var(--text-mid); font-weight: 500; }
+    .hero-ctas {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.28s ease both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff;
+      padding: 13px 26px; border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      transition: background 0.2s, transform 0.15s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text-mid);
+      padding: 12px 24px; border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 500;
+      border: 1.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+    .hero-pill {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-light);
+      background: var(--accent-pale);
+      border: 1px solid var(--accent-ring);
+      border-radius: 40px; padding: 4px 11px;
+    }
+
+    .hero-scroll {
+      margin-top: 52px;
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-light);
+      display: flex; align-items: center; gap: 8px;
+      animation: fadeUp 0.6s 0.42s ease both;
+    }
+    .hero-scroll-line {
+      width: 32px; height: 1px; background: var(--border);
+    }
+
+    /* Hero right — photo */
+    .hero-right {
+      position: relative;
+      animation: fadeUp 0.65s 0.2s ease both;
+    }
+    .hero-photo-frame {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 4px; overflow: hidden;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      position: relative;
+    }
+    .hero-photo-frame img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    }
+    .hero-photo-caption {
+      margin-top: 14px;
+      font-size: 11px; color: var(--text-light);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      text-align: center;
+    }
+    /* Decorative accent line on photo */
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 60%) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* ─── CREDENTIALS STRIP ─── */
+    .cred-strip {
+      background: var(--bg-dark);
+      color: var(--on-dark-dim);
+      font-size: 11px; letter-spacing: 0.05em;
+      padding: 10px 40px; text-align: center;
+      overflow: hidden; white-space: nowrap;
+    }
+    .cred-strip strong { color: var(--on-dark-mid); font-weight: 500; }
+    .cred-strip .sep { margin: 0 14px; opacity: 0.3; }
+
+    /* ─── STATS ─── */
+    .stats {
+      padding: 88px 40px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: var(--max); margin: 0 auto;
+    }
+    .stats-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 52px; text-align: center;
+    }
+    .stats-row {
+      display: flex; align-items: stretch;
+    }
+    .stat-item {
+      flex: 1; text-align: center;
+      padding: 0 32px;
+    }
+    .stat-item + .stat-item {
+      border-left: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(60px, 7vw, 96px);
+      font-weight: 500; color: var(--text);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .stat-num em { color: var(--accent); font-style: normal; }
+    .stat-desc {
+      font-size: 13px; color: var(--text-light);
+      line-height: 1.5; max-width: 120px; margin: 0 auto;
+    }
+
+    @media (max-width: 780px) {
+      .stats-row { flex-wrap: wrap; gap: 40px 0; }
+      .stat-item { flex: 0 0 50%; }
+      .stat-item:nth-child(2) { border-left: 1px solid var(--border); }
+      .stat-item:nth-child(3) { border-left: none; border-top: 1px solid var(--border); padding-top: 40px; }
+      .stat-item:nth-child(4),
+      .stat-item:nth-child(5) { border-top: 1px solid var(--border); padding-top: 40px; }
+      .stat-item:nth-child(4) { border-left: none; }
+      .stat-item:nth-child(5) { border-left: 1px solid var(--border); }
+    }
+    @media (max-width: 480px) {
+      .stat-item { flex: 0 0 100%; border-left: none !important; border-top: 1px solid var(--border); }
+      .stat-item:first-child { border-top: none; padding-top: 0; }
+      .stat-item { padding: 32px 0 0; }
+    }
+
+    /* ─── SERVICES ─── */
+    .services {
+      padding: 100px 40px;
+      background: var(--bg);
+    }
+    .services-inner { max-width: var(--max); margin: 0 auto; }
+    .section-head { margin-bottom: 60px; }
+    .eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      display: block; margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 600; color: var(--text);
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px; color: var(--text-light);
+      line-height: 1.75; max-width: 520px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+    }
+    .svc-card {
+      background: var(--bg);
+      padding: 40px 36px;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .svc-card:hover {
+      background: var(--bg-alt);
+    }
+    /* Accent left border on hover */
+    .svc-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px; background: var(--accent);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.25s ease;
+    }
+    .svc-card:hover::before { transform: scaleY(1); }
+
+    .svc-header {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 10px;
+    }
+    .svc-icon {
+      font-size: 22px; line-height: 1;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .svc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px; font-weight: 600;
+      color: var(--text); line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .svc-tagline {
+      font-size: 14px; color: var(--text-light);
+      line-height: 1.65; margin-bottom: 24px;
+    }
+    .svc-fields { margin-bottom: 22px; }
+    .svc-field {
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
+      display: grid; grid-template-columns: 130px 1fr; gap: 12px;
+      align-items: baseline;
+    }
+    .svc-field-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-light);
+    }
+    .svc-field-value {
+      font-size: 14px; color: var(--text-mid); line-height: 1.55;
+    }
+    .svc-tags {
+      display: flex; flex-wrap: wrap; gap: 5px;
+    }
+    .svc-tag {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+      color: var(--accent);
+      background: var(--accent-pale);
+      border: 1px solid var(--accent-ring);
+      border-radius: 40px; padding: 2px 9px;
+    }
+
+    @media (max-width: 820px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .svc-card { padding: 28px 20px; }
+      .svc-field { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw {
+      padding: 100px 40px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .hiw-inner { max-width: var(--max); margin: 0 auto; }
+    .hiw-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 60px;
+    }
+    .hiw-step {
+      padding: 0 44px 0 0;
+    }
+    .hiw-step + .hiw-step {
+      padding: 0 44px 0 44px;
+      border-left: 1px solid var(--border);
+    }
+    .hiw-step:last-child { padding-right: 0; }
+    .hiw-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px; font-weight: 300;
+      color: var(--accent); opacity: 0.35;
+      line-height: 1; letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+    .hiw-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 600;
+      color: var(--text); margin-bottom: 12px;
+    }
+    .hiw-desc {
+      font-size: 15px; color: var(--text-light);
+      line-height: 1.75;
+    }
+    .hiw-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 14px;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+    }
+    .hiw-badge::before { content: '→'; }
+
+    .hiw-footer-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      margin-top: 64px;
+      background: var(--bg-dark);
+      border-radius: 6px; overflow: hidden;
+    }
+    .hiw-stat {
+      padding: 28px 32px;
+      border-right: 1px solid var(--border-dark);
+    }
+    .hiw-stat:last-child { border-right: none; }
+    .hiw-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 500;
+      color: var(--accent); line-height: 1;
+    }
+    .hiw-stat-label {
+      font-size: 11px; font-weight: 500;
+      color: var(--on-dark-mid);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 780px) {
+      .hiw-steps { grid-template-columns: 1fr; gap: 40px; }
+      .hiw-step, .hiw-step + .hiw-step { padding: 0; border-left: none; }
+      .hiw-step + .hiw-step { border-top: 1px solid var(--border); padding-top: 40px; }
+      .hiw-footer-bar { grid-template-columns: repeat(2, 1fr); }
+      .hiw-stat:nth-child(2) { border-right: none; }
+      .hiw-stat:nth-child(3) { border-top: 1px solid var(--border-dark); }
+    }
+    @media (max-width: 480px) {
+      .hiw-footer-bar { grid-template-columns: 1fr; }
+      .hiw-stat { border-right: none; border-top: 1px solid var(--border-dark); }
+      .hiw-stat:first-child { border-top: none; }
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 100px 40px;
+      background: var(--bg);
+    }
+    .testimonials-inner { max-width: var(--max); margin: 0 auto; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+      margin-top: 60px;
+    }
+    .testi-card {
+      background: var(--bg);
+      padding: 36px 32px;
+      display: flex; flex-direction: column;
+      position: relative; transition: background 0.2s;
+    }
+    .testi-card:hover { background: var(--bg-alt); }
+    .testi-context {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .testi-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px; font-weight: 400; font-style: italic;
+      color: var(--text); line-height: 1.65;
+      flex: 1; margin-bottom: 24px;
+    }
+    .testi-quote::before {
+      content: '\201C';
+      font-size: 48px; line-height: 0.5;
+      color: var(--accent); opacity: 0.4;
+      display: block; margin-bottom: 12px;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .testi-role {
+      font-size: 12px; color: var(--text-light);
+      padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    @media (max-width: 820px) {
+      .testi-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CONTACT ─── */
+    .contact {
+      padding: 100px 40px;
+      background: var(--bg-dark);
+      color: var(--on-dark);
+      position: relative; overflow: hidden;
+    }
+    /* Background texture */
+    .contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(212,80,12,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,80,12,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .contact-inner {
+      max-width: var(--max); margin: 0 auto;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px;
+      align-items: start;
+    }
+    .contact-left {}
+    .contact-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(212,80,12,0.9);
+      display: block; margin-bottom: 16px;
+    }
+    .contact-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 4.5vw, 56px);
+      font-weight: 600; color: var(--on-dark);
+      line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .contact-sub {
+      font-size: 16px; color: var(--on-dark-mid);
+      line-height: 1.75; margin-bottom: 40px;
+      max-width: 420px;
+    }
+    .contact-links {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-link-row {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .contact-link-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(212,80,12,0.12);
+      border: 1px solid rgba(212,80,12,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-link-icon svg { color: var(--accent); }
+    .contact-link-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--on-dark-dim);
+      display: block;
+    }
+    .contact-link-val {
+      font-size: 14px; color: var(--on-dark-mid);
+      transition: color 0.15s;
+    }
+    .contact-link-val:hover { color: var(--accent); }
+
+    .contact-wa {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-dark);
+    }
+    .contact-wa-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--on-dark-dim);
+      margin-bottom: 12px; display: block;
+    }
+    .wa-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366; border: 1px solid #128C7E;
+      border-radius: 8px; padding: 11px 20px;
+      color: #fff; font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      transition: background 0.15s, transform 0.15s;
+    }
+    .wa-btn:hover { background: #1ebe5a; transform: translateY(-1px); }
+    .wa-btn small {
+      display: block; font-size: 9px;
+      font-weight: 400; color: rgba(255,255,255,0.75);
+      letter-spacing: 0.05em; text-transform: uppercase;
+      line-height: 1;
+    }
+    .wa-btn strong {
+      font-size: 15px; font-weight: 600; line-height: 1.2;
+      display: block;
+    }
+    .wa-note {
+      font-size: 11px; color: var(--on-dark-dim);
+      margin-top: 9px;
+    }
+
+    /* Form */
+    .contact-right {}
+    .form-card {
+      background: rgba(255,252,245,0.04);
+      border: 1px solid var(--border-dark);
+      border-radius: 8px; padding: 36px 32px;
+    }
+    .form-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 600; color: var(--on-dark);
+      margin-bottom: 6px;
+    }
+    .form-card-sub {
+      font-size: 13px; color: var(--on-dark-mid);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { margin-bottom: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--on-dark-dim);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; color: var(--on-dark);
+      background: rgba(255,252,245,0.06);
+      border: 1.5px solid var(--border-dark);
+      border-radius: 6px; padding: 11px 14px;
+      outline: none; transition: border-color 0.15s; width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--on-dark-dim); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      background: rgba(255,252,245,0.09);
+    }
+    .form-group select {
+      cursor: pointer; appearance: none;
+      color: var(--on-dark);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' viewBox='0 0 12 8'%3E%3Cpath stroke='%237a5a42' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .form-group select option { background: #1c1007; color: var(--on-dark); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit {
+      width: 100%; background: var(--accent); color: #fff;
+      border: none; border-radius: 6px; padding: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+      margin-top: 4px;
+    }
+    .form-submit:hover { background: var(--accent-h); transform: translateY(-1px); }
+    .form-success {
+      display: none; text-align: center; padding: 40px 0;
+    }
+    .form-success-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(26,158,94,0.12); border: 1.5px solid rgba(26,158,94,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin: 0 auto 16px;
+    }
+    .form-success h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-weight: 600; color: var(--on-dark);
+      margin-bottom: 8px;
+    }
+    .form-success p { font-size: 14px; color: var(--on-dark-mid); line-height: 1.7; }
+    .form-success a { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 52px; }
+    }
+    @media (max-width: 680px) {
+      .form-row { grid-template-columns: 1fr; }
+      .form-card { padding: 24px 20px; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-dark);
+      padding: 28px 40px;
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--on-dark); letter-spacing: -0.01em;
+    }
+    .footer-brand span { color: var(--accent); }
+    .footer-brand-sub {
+      font-size: 10px; color: var(--on-dark-dim);
+      letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px;
+    }
+    .footer-regs {
+      font-size: 10px; color: var(--on-dark-dim); line-height: 1.8;
+      text-align: center;
+    }
+    .footer-regs strong { color: rgba(255,252,245,0.4); font-weight: 500; }
+    .footer-right {
+      text-align: right;
+    }
+    .footer-email {
+      font-size: 13px; color: var(--on-dark-mid);
+      transition: color 0.15s; display: block;
+    }
+    .footer-email:hover { color: var(--accent); }
+    .footer-copy {
+      font-size: 11px; color: var(--on-dark-dim); margin-top: 4px;
+    }
+
+    @media (max-width: 680px) {
+      footer { padding: 28px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-right { text-align: left; }
+      .footer-regs { text-align: left; }
+    }
+
+    /* ─── CHAT WIDGET ─── */
+    .va-fab {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--accent); color: #fff; border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(192,92,10,0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      z-index: 9000;
+    }
+    .va-fab:hover { background: var(--accent-h); box-shadow: 0 6px 24px rgba(192,92,10,0.5); }
+    .va-fab--open { transform: rotate(45deg); }
+    .va-fab svg { width: 22px; height: 22px; transition: opacity 0.15s; }
+    .va-fab .va-icon-chat { display: block; }
+    .va-fab .va-icon-close { display: none; }
+    .va-fab--open .va-icon-chat { display: none; }
+    .va-fab--open .va-icon-close { display: block; }
+
+    .va-window {
+      position: fixed; bottom: 92px; right: 28px;
+      width: 356px; max-height: 520px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+      display: flex; flex-direction: column;
+      z-index: 8999; overflow: hidden;
+      animation: va-slide-in 0.22s cubic-bezier(0.22,1,0.36,1);
+    }
+    .va-window[hidden] { display: none !important; }
+    @keyframes va-slide-in {
+      from { opacity: 0; transform: translateY(12px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .va-header {
+      background: var(--bg-dark); padding: 13px 15px;
+      display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+    }
+    .va-header-info { display: flex; align-items: center; gap: 9px; }
+    .va-header-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.2); flex-shrink: 0;
+    }
+    .va-header-title { font-size: 14px; font-weight: 600; color: var(--on-dark); line-height: 1.2; }
+    .va-header-sub { font-size: 10px; color: var(--on-dark-mid); letter-spacing: 0.03em; }
+    .va-close {
+      background: none; border: none; color: var(--on-dark-mid);
+      cursor: pointer; font-size: 17px; padding: 2px 4px; transition: color 0.15s;
+    }
+    .va-close:hover { color: var(--on-dark); }
+    .va-messages {
+      flex: 1; overflow-y: auto; padding: 14px;
+      display: flex; flex-direction: column; gap: 9px;
+      min-height: 180px; max-height: 340px;
+    }
+    .va-messages::-webkit-scrollbar { width: 3px; }
+    .va-messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .va-msg {
+      max-width: 85%; padding: 9px 12px; border-radius: 10px;
+      font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word;
+    }
+    .va-msg--user {
+      align-self: flex-end; background: var(--accent); color: #fff; border-bottom-right-radius: 2px;
+    }
+    .va-msg--assistant {
+      align-self: flex-start; background: var(--bg-alt); color: var(--text);
+      border-bottom-left-radius: 2px; border: 1px solid var(--border);
+    }
+    .va-typing { display: flex; align-items: center; gap: 4px; padding: 11px 13px; }
+    .va-typing span {
+      width: 5px; height: 5px; border-radius: 50%; background: var(--text-light);
+      animation: va-bounce 1.2s infinite;
+    }
+    .va-typing span:nth-child(2) { animation-delay: 0.18s; }
+    .va-typing span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes va-bounce {
+      0%,60%,100% { transform: translateY(0); opacity: 0.5; }
+      30% { transform: translateY(-5px); opacity: 1; }
+    }
+    .va-suggestions {
+      display: flex; flex-wrap: wrap; gap: 5px; padding: 0 14px 10px;
+    }
+    .va-suggestion {
+      font-size: 11px; padding: 4px 9px;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: var(--bg-alt); color: var(--text-mid);
+      cursor: pointer; transition: border-color 0.15s, color 0.15s;
+    }
+    .va-suggestion:hover { border-color: var(--accent); color: var(--accent); }
+    .va-input-area {
+      display: flex; align-items: flex-end; gap: 7px;
+      padding: 10px 10px; border-top: 1px solid var(--border);
+      background: var(--bg); flex-shrink: 0;
+    }
+    .va-input {
+      flex: 1; resize: none; border: 1px solid var(--border); border-radius: 6px;
+      padding: 8px 11px; font-family: 'DM Sans', sans-serif; font-size: 14px;
+      color: var(--text); background: white; outline: none;
+      line-height: 1.5; max-height: 100px; overflow-y: auto;
+      transition: border-color 0.15s;
+    }
+    .va-input:focus { border-color: var(--accent-ring); }
+    .va-input::placeholder { color: var(--text-light); }
+    .va-send {
+      width: 34px; height: 34px; border-radius: 6px;
+      background: var(--accent); color: #fff; border: none;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.15s;
+    }
+    .va-send:hover:not(:disabled) { background: var(--accent-h); }
+    .va-send:disabled { opacity: 0.4; cursor: not-allowed; }
+    .va-send svg { width: 15px; height: 15px; }
+
+    @media (max-width: 479px) {
+      .va-window { right: 10px; left: 10px; width: auto; bottom: 80px; }
+      .va-fab { bottom: 18px; right: 14px; }
+    }
+
+    /* ─── HERO RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .hero { padding: 120px 20px 80px; }
+    }
+    @media (max-width: 680px) {
+      .services { padding: 72px 20px; }
+      .hiw { padding: 72px 20px; }
+      .testimonials { padding: 72px 20px; }
+      .contact { padding: 72px 20px; }
+      .stats { padding: 64px 20px; }
+      .hero-name { font-size: clamp(60px, 16vw, 88px); }
+    }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <div class="nav-monogram">HS</div>
+      <div class="nav-brand-text">
+        <div class="nav-brand-name">Harihar.S</div>
+        <div class="nav-brand-sub">Chartered Engineer · Registered Valuer</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Request a Consultation</a></li>
+    </ul>
+    <button class="nav-ham" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="drawer">
+  <a href="#services" onclick="closeDrawer()">Services</a>
+  <a href="#process" onclick="closeDrawer()">Process</a>
+  <a href="#contact" onclick="closeDrawer()">Contact</a>
+  <a href="#contact" onclick="closeDrawer()" style="color:var(--accent);font-weight:600;">Request a Consultation</a>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        IBBI Registered Valuer &nbsp;·&nbsp; Pan-India &nbsp;·&nbsp; 20+ Years
+      </div>
+
+      <p class="hero-quote">
+        "A valuation is not a document. It is a professional opinion that a bank, court, or regulator will act on — and it must be defensible."
+      </p>
+
+      <h1 class="hero-name">
+        HARIHAR<em>.S</em>
+      </h1>
+
+      <p class="hero-sub">
+        <span>Chartered Engineer</span> · <span>Registered Valuer</span> · Axium Valuation Services
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">
+          Request a Consultation
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/918939891329?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20valuation%20assignment" class="btn-ghost" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="hero-pills">
+        <span class="hero-pill">IBBI/RV/04/2019/10652</span>
+        <span class="hero-pill">IBBI/RV/04/2022/15081</span>
+        <span class="hero-pill">F-1256668/2019 — FIE</span>
+        <span class="hero-pill">Income Tax Registered</span>
+      </div>
+
+      <div class="hero-scroll">
+        <span class="hero-scroll-line"></span>
+        ↓ Scroll
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-frame">
+        <img src="../harihar-photo.jpg" alt="Harihar.S — Chartered Engineer & Registered Valuer">
+      </div>
+      <p class="hero-photo-caption">Harihar.S · Chennai, India</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Credentials strip -->
+<div class="cred-strip">
+  Recognized by <strong>DGFT</strong> <span class="sep">·</span>
+  <strong>Customs</strong> <span class="sep">·</span>
+  <strong>Banks &amp; NBFCs</strong> <span class="sep">·</span>
+  <strong>NCLT &amp; IBC</strong> <span class="sep">·</span>
+  <strong>Government Bodies</strong> <span class="sep">·</span>
+  Income Tax Department <span class="sep">·</span>
+  IBBI
+</div>
+
+<!-- ══ STATS ══ -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stats-label reveal">Practice at a glance</div>
+    <div class="stats-row">
+      <div class="stat-item reveal reveal-delay-1">
+        <span class="stat-num">20<em>+</em></span>
+        <p class="stat-desc">Years in practice</p>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <span class="stat-num">500<em>+</em></span>
+        <p class="stat-desc">Assignments completed</p>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <span class="stat-num">100<em>+</em></span>
+        <p class="stat-desc">Corporate clients</p>
+      </div>
+      <div class="stat-item reveal reveal-delay-4">
+        <span class="stat-num">50<em>+</em></span>
+        <p class="stat-desc">Industries served</p>
+      </div>
+      <div class="stat-item reveal reveal-delay-5">
+        <span class="stat-num">98<em>%</em></span>
+        <p class="stat-desc">First-submission acceptance</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-head reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="section-title">Six services.<br>One expert.</h2>
+      <p class="section-sub">Valuation, certification, and inspection — all under one practice, all personally led by Harihar.S with 20 years of engineering and regulatory expertise.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">⚖️</div>
+          <div class="svc-name">Business Valuation</div>
+        </div>
+        <p class="svc-tagline">Independent business and equity valuation for M&A, IBC, income tax, and SEBI compliance.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">CAs, transaction advisors, and corporates going through M&A or restructuring</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Revenue streams, assets, liabilities, shareholding, and comparable market data</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">IBBI-registered valuation report accepted by auditors, courts, and SEBI</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">M&amp;A</span>
+          <span class="svc-tag">Companies Act</span>
+          <span class="svc-tag">IBC / NCLT</span>
+          <span class="svc-tag">SEBI</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">🏭</div>
+          <div class="svc-name">Plant &amp; Machinery Valuation</div>
+        </div>
+        <p class="svc-tagline">Technical valuation of industrial assets with engineering-level depth — not just depreciation schedules.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">Banks, NBFCs, and corporates requiring loan collateral assessment or NPA resolution</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Physical condition, specifications, utilization, and remaining useful life</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">Registered valuer report accepted by banks and NCLT on first submission</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">Loan Collateral</span>
+          <span class="svc-tag">NPA Resolution</span>
+          <span class="svc-tag">IBBI Registered</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">🏢</div>
+          <div class="svc-name">Land &amp; Building Valuation</div>
+        </div>
+        <p class="svc-tagline">Registered valuation for commercial, industrial, and complex real estate assets.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">Banks, borrowers, and companies with mortgage, capital gains, or project finance needs</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Title documents, approved plans, comparable transactions, and physical inspection</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">Income Tax and IBBI-registered report for loan disbursement or tax compliance</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">Mortgage</span>
+          <span class="svc-tag">Capital Gains</span>
+          <span class="svc-tag">Project Finance</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">📜</div>
+          <div class="svc-name">Chartered Engineer Certification</div>
+        </div>
+        <p class="svc-tagline">Government-recognized CE certificates for DGFT, Customs, and regulatory approvals.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">Importers, exporters, and manufacturers requiring DGFT or Customs documentation</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Technical specifications, equipment condition, utilization, and compliance parameters</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">Fellow IEI certificate accepted by DGFT, Customs Department, and government bodies</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">DGFT</span>
+          <span class="svc-tag">Customs</span>
+          <span class="svc-tag">Pre-Shipment Inspection</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">🏆</div>
+          <div class="svc-name">PLI Verification Services</div>
+        </div>
+        <p class="svc-tagline">Investment verification for Production Linked Incentive scheme claims across eligible sectors.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">Manufacturers in Electronics, Pharma, Automotive, Medical Devices, and Food Processing</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Eligible capital investment, asset eligibility, DPIIT thresholds, incremental sales</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">Ministry-prescribed format certification — incentive claim approved in the same cycle</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">PLI Scheme</span>
+          <span class="svc-tag">DPIIT Format</span>
+          <span class="svc-tag">Ministry Compliance</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal">
+        <div class="svc-header">
+          <div class="svc-icon">📦</div>
+          <div class="svc-name">EPCG Verification</div>
+        </div>
+        <p class="svc-tagline">Export Promotion Capital Goods certification from import duty exemption through export obligation closure.</p>
+        <div class="svc-fields">
+          <div class="svc-field">
+            <span class="svc-field-label">Who needs this</span>
+            <span class="svc-field-value">Importers and exporters under EPCG licence obligations with Customs</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What we assess</span>
+            <span class="svc-field-value">Capital goods utilization, export obligation status, and import documentation</span>
+          </div>
+          <div class="svc-field">
+            <span class="svc-field-label">What you receive</span>
+            <span class="svc-field-value">Clean Customs Department closure with zero retrospective duty liability</span>
+          </div>
+        </div>
+        <div class="svc-tags">
+          <span class="svc-tag">EPCG Scheme</span>
+          <span class="svc-tag">Export Obligation</span>
+          <span class="svc-tag">Customs</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="hiw" id="process">
+  <div class="hiw-inner">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Process</span>
+      <h2 class="section-title">Simple. Direct.<br>Reliable.</h2>
+      <p class="section-sub">Three steps, complete transparency — you know who is doing the work, what it involves, and when the report arrives.</p>
+    </div>
+
+    <div class="hiw-steps">
+      <div class="hiw-step reveal">
+        <div class="hiw-num">01</div>
+        <h3 class="hiw-title">Reach Out</h3>
+        <p class="hiw-desc">Share your requirement — the asset, the purpose, and the regulatory context. Harihar.S reviews every submission personally and responds within 24 hours with a scope confirmation and quote.</p>
+        <span class="hiw-badge">Quote within 24 hours</span>
+      </div>
+      <div class="hiw-step reveal reveal-delay-2">
+        <div class="hiw-num">02</div>
+        <h3 class="hiw-title">Site Inspection</h3>
+        <p class="hiw-desc">Harihar and his expert team conduct every on-site assessment with Chartered Engineer expertise — never delegated to an unqualified analyst. Pan-India coverage, documented at an engineering level.</p>
+        <span class="hiw-badge">Qualified expert on every visit</span>
+      </div>
+      <div class="hiw-step reveal reveal-delay-4">
+        <div class="hiw-num">03</div>
+        <h3 class="hiw-title">Certified Report</h3>
+        <p class="hiw-desc">A detailed, regulatory-standard certified report delivered within 5–7 working days. Structured for the specific authority — bank, NCLT, DGFT, Customs, ministry, or auditor. Post-submission query support included.</p>
+        <span class="hiw-badge">5–7 working day delivery</span>
+      </div>
+    </div>
+
+    <div class="hiw-footer-bar reveal">
+      <div class="hiw-stat">
+        <div class="hiw-stat-num">24 hrs</div>
+        <div class="hiw-stat-label">Quote turnaround</div>
+      </div>
+      <div class="hiw-stat">
+        <div class="hiw-stat-num">5–7 days</div>
+        <div class="hiw-stat-label">Report delivery</div>
+      </div>
+      <div class="hiw-stat">
+        <div class="hiw-stat-num">Pan-India</div>
+        <div class="hiw-stat-label">On-site coverage</div>
+      </div>
+      <div class="hiw-stat">
+        <div class="hiw-stat-num">98%</div>
+        <div class="hiw-stat-label">First-submission success</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIALS ══ -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="section-head reveal">
+      <span class="eyebrow">Client Voices</span>
+      <h2 class="section-title">Trusted by CAs, corporates,<br>and institutions across India.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-context">CA Firm · Recurring Retainer</div>
+        <p class="testi-quote">We route all our client valuation mandates through Harihar.S. Every report is accepted first time — by banks, by auditors, by the Income Tax department. That reliability is non-negotiable for us. We've been working together for over four years.</p>
+        <div class="testi-role">Partner, CA Firm · Chennai</div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-context">Manufacturing Corporate · PLI Scheme</div>
+        <p class="testi-quote">Our PLI investment verification was time-critical. Harihar.S completed the on-site assessment within two days, submitted in the ministry-prescribed format, and the claim was approved in the same assessment cycle. That outcome saved us a full year of delay.</p>
+        <div class="testi-role">CFO, Electronics Manufacturer · Pune</div>
+      </div>
+      <div class="testi-card reveal reveal-delay-4">
+        <div class="testi-context">Individual · Property Valuation for Capital Gains</div>
+        <p class="testi-quote">I needed a registered valuer's report for my property sale. Harihar explained the whole process clearly, visited the site, and delivered the report well within the deadline. My CA was satisfied with it immediately. No back-and-forth, no stress.</p>
+        <div class="testi-role">Property Owner · Chennai</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+
+    <div class="contact-left">
+      <span class="contact-eyebrow reveal">Get in Touch</span>
+      <h2 class="contact-title reveal">Let's discuss<br>your assignment.</h2>
+      <p class="contact-sub reveal">Every engagement starts with a conversation. Share your requirement and receive a scope confirmation and quote within 24 hours. No charge for the initial discussion.</p>
+
+      <div class="contact-links reveal">
+        <div class="contact-link-row">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <span class="contact-link-label">Email</span>
+            <a href="mailto:harihar@axium.co.in" class="contact-link-val">harihar@axium.co.in</a>
+          </div>
+        </div>
+        <div class="contact-link-row">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="contact-link-label">Phone</span>
+            <a href="tel:+918939891329" class="contact-link-val">+91 89398 91329</a>
+          </div>
+        </div>
+        <div class="contact-link-row">
+          <div class="contact-link-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <span class="contact-link-label">Location</span>
+            <span class="contact-link-val">Chennai, India · Pan-India service</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-wa reveal">
+        <span class="contact-wa-label">Prefer a quick message?</span>
+        <a href="https://wa.me/918939891329?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20valuation%20assignment" target="_blank" rel="noopener" class="wa-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div>
+            <small>Message on</small>
+            <strong>WhatsApp</strong>
+          </div>
+        </a>
+        <p class="wa-note">+91 89398 91329 · Responds within 2 hours on business days.</p>
+      </div>
+    </div>
+
+    <div class="contact-right reveal">
+      <div class="form-card">
+        <h3 class="form-card-title">Request a Consultation</h3>
+        <p class="form-card-sub">Harihar.S reviews every submission personally and responds within one business day.</p>
+
+        <div id="form-body">
+          <form id="inquiry-form" onsubmit="submitForm(event)" action="https://formspree.io/f/mwvrpywa" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="f-name">Your Name *</label>
+                <input type="text" id="f-name" name="name" placeholder="Rajesh Kumar" required>
+              </div>
+              <div class="form-group">
+                <label for="f-phone">Phone *</label>
+                <input type="tel" id="f-phone" name="phone" placeholder="+91 98xxx xxxxx" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="rajesh@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="f-service">Service Required *</label>
+              <select id="f-service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+                <option>Business Valuation</option>
+                <option>Plant &amp; Machinery Valuation</option>
+                <option>Land &amp; Building Valuation</option>
+                <option>Chartered Engineer Certification</option>
+                <option>PLI Verification Services</option>
+                <option>EPCG Verification</option>
+                <option>Not sure — need guidance</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-company">Company <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:10px;color:var(--on-dark-dim)">(optional)</span></label>
+              <input type="text" id="f-company" name="company" placeholder="Acme Industries Ltd.">
+            </div>
+            <div class="form-group">
+              <label for="f-desc">Brief Description <span style="font-weight:300;text-transform:none;letter-spacing:0;font-size:10px;color:var(--on-dark-dim)">(optional)</span></label>
+              <textarea id="f-desc" name="message" placeholder="e.g. Plant &amp; machinery valuation for a term loan — 3 CNC machines at our Chennai facility."></textarea>
+            </div>
+            <button type="submit" class="form-submit" id="form-btn">Submit Inquiry →</button>
+          </form>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">✓</div>
+          <h4>Inquiry Received</h4>
+          <p>Harihar.S will review your requirement and respond within one business day with scope confirmation and a fee estimate.<br><br>For urgent matters, call <a href="tel:+918939891329">+91 89398 91329</a> directly.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">HARIHAR<span>.</span>S</div>
+      <div class="footer-brand-sub">Axium Valuation Services · Chennai</div>
+    </div>
+    <div class="footer-regs">
+      <strong>IBBI/RV/04/2019/10652</strong> · P&amp;M &nbsp;|&nbsp;
+      <strong>IBBI/RV/04/2022/15081</strong> · L&amp;B &nbsp;|&nbsp;
+      <strong>F-1256668/2019</strong> · FIE
+    </div>
+    <div class="footer-right">
+      <a href="mailto:harihar@axium.co.in" class="footer-email">harihar@axium.co.in</a>
+      <div class="footer-copy">© <span id="copy-year"></span> Axium Valuation Services</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ CHAT WIDGET ══ -->
+<button class="va-fab" id="va-fab" onclick="vaToggle()" aria-label="Open Valuation Advisor">
+  <svg class="va-icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="va-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+<div class="va-window" id="va-window" hidden>
+  <div class="va-header">
+    <div class="va-header-info">
+      <div class="va-header-dot"></div>
+      <div>
+        <div class="va-header-title">Valuation Advisor</div>
+        <div class="va-header-sub">Axium Valuation Services</div>
+      </div>
+    </div>
+    <button class="va-close" onclick="vaToggle()">✕</button>
+  </div>
+  <div class="va-messages" id="va-messages"></div>
+  <div class="va-suggestions" id="va-suggestions">
+    <button class="va-suggestion" onclick="vaAsk(this)">When do I need a valuation?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">What is PLI verification?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">Documents for P&M valuation?</button>
+    <button class="va-suggestion" onclick="vaAsk(this)">What is EPCG?</button>
+  </div>
+  <div class="va-input-area">
+    <textarea id="va-input" class="va-input" placeholder="Ask about valuations…" rows="1"></textarea>
+    <button id="va-send" class="va-send" onclick="vaSend()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ── NAV ── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 20); });
+const ham = document.getElementById('ham');
+const drawer = document.getElementById('drawer');
+ham.addEventListener('click', () => drawer.classList.toggle('open'));
+function closeDrawer() { drawer.classList.remove('open'); }
+
+/* ── SCROLL REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealAll = () => revealEls.forEach(el => el.classList.add('in'));
+const fallback = setTimeout(revealAll, 2000);
+if ('IntersectionObserver' in window) {
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.06 });
+  revealEls.forEach(el => ro.observe(el));
+  const fo = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { clearTimeout(fallback); fo.disconnect(); }
+  }, { threshold: 0.06 });
+  if (revealEls[0]) fo.observe(revealEls[0]);
+} else { clearTimeout(fallback); revealAll(); }
+
+/* ── COPYRIGHT ── */
+document.getElementById('copy-year').textContent = new Date().getFullYear();
+
+/* ── FORM ── */
+async function submitForm(e) {
+  e.preventDefault();
+  const form = document.getElementById('inquiry-form');
+  const btn = document.getElementById('form-btn');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const resp = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+    if (resp.ok) {
+      document.getElementById('form-body').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else { btn.disabled = false; btn.textContent = 'Submit Inquiry →'; alert('Something went wrong. Please email harihar@axium.co.in directly.'); }
+  } catch (_) { btn.disabled = false; btn.textContent = 'Submit Inquiry →'; alert('Network error. Please email harihar@axium.co.in directly.'); }
+}
+
+/* ── CHATBOT ── */
+(function () {
+  const history = []; let open = false; let loading = false;
+  function render(role, text) {
+    const c = document.getElementById('va-messages');
+    const d = document.createElement('div');
+    d.className = 'va-msg va-msg--' + role;
+    d.textContent = text;
+    c.appendChild(d); c.scrollTop = c.scrollHeight;
+    return d;
+  }
+  window.vaToggle = function () {
+    open = !open;
+    const win = document.getElementById('va-window');
+    const fab = document.getElementById('va-fab');
+    if (open) {
+      win.removeAttribute('hidden'); fab.classList.add('va-fab--open');
+      if (history.length === 0) render('assistant', "Hi, I'm the Valuation Advisor for Axium Valuation Services. Ask me anything about valuations, certifications, or regulatory requirements — I'm here to help.");
+      setTimeout(() => document.getElementById('va-input').focus(), 80);
+    } else { win.setAttribute('hidden', ''); fab.classList.remove('va-fab--open'); }
+  };
+  window.vaAsk = function (btn) {
+    const t = btn.textContent.trim();
+    document.getElementById('va-suggestions').style.display = 'none';
+    document.getElementById('va-input').value = t;
+    vaSend();
+  };
+  async function vaSend() {
+    if (loading) return;
+    const inp = document.getElementById('va-input');
+    const text = inp.value.trim(); if (!text) return;
+    inp.value = ''; inp.style.height = 'auto';
+    document.getElementById('va-suggestions').style.display = 'none';
+    history.push({ role: 'user', content: text });
+    render('user', text);
+    loading = true; document.getElementById('va-send').disabled = true;
+    const ml = document.getElementById('va-messages');
+    const td = document.createElement('div');
+    td.className = 'va-msg va-msg--assistant va-typing';
+    td.innerHTML = '<span></span><span></span><span></span>';
+    ml.appendChild(td); ml.scrollTop = ml.scrollHeight;
+    try {
+      const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) });
+      td.remove();
+      if (!r.ok) throw new Error();
+      const data = await r.json();
+      history.push({ role: 'assistant', content: data.content });
+      render('assistant', data.content);
+    } catch (_) { td.remove(); render('assistant', 'Sorry, something went wrong. Please contact us at harihar@axium.co.in.'); }
+    loading = false; document.getElementById('va-send').disabled = false;
+  }
+  window.vaSend = vaSend;
+  document.addEventListener('DOMContentLoaded', () => {
+    const inp = document.getElementById('va-input');
+    inp.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); vaSend(); } });
+    inp.addEventListener('input', function () { this.style.height = 'auto'; this.style.height = Math.min(this.scrollHeight, 100) + 'px'; });
+  });
+}());
+</script>
+
+</body>
+</html>
