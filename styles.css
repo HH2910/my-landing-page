@@ -3,21 +3,21 @@
    =========================== */
 
 :root {
-  --bg: #f3faf8;
-  --bg-alt: #e2f2ee;
-  --bg-dark: #0a3030;
-  --text: #0a3030;
-  --text-mid: #3a5858;
-  --text-light: #5a8080;
-  --on-dark: rgba(228,248,244,0.96);
-  --on-dark-mid: rgba(228,248,244,0.65);
-  --on-dark-dim: rgba(228,248,244,0.22);
-  --accent: #c07820;
-  --accent-h: #d08a28;
-  --accent-pale: rgba(192,120,32,0.11);
-  --accent-ring: rgba(192,120,32,0.28);
-  --border: #b0d4cc;
-  --border-dark: #072020;
+  --bg: #f6f9ff;
+  --bg-alt: #eaf0fd;
+  --bg-dark: #0f2461;
+  --text: #0f2461;
+  --text-mid: #3d5080;
+  --text-light: #6080a8;
+  --on-dark: rgba(236,244,255,0.96);
+  --on-dark-mid: rgba(236,244,255,0.66);
+  --on-dark-dim: rgba(236,244,255,0.20);
+  --accent: #1a6ee8;
+  --accent-h: #2678f0;
+  --accent-pale: rgba(26,110,232,0.10);
+  --accent-ring: rgba(26,110,232,0.25);
+  --border: #c2d0f0;
+  --border-dark: #0a1840;
   --r: 8px;
   --rl: 14px;
   --max: 1080px;
@@ -46,12 +46,12 @@ img { max-width: 100%; display: block; }
 .dark { background: var(--bg-dark); color: var(--on-dark-mid); }
 .dark .s-title { color: var(--on-dark); }
 .dark .s-sub { color: var(--on-dark-mid); }
-.dark .eyebrow { color: rgba(208,138,40,0.9); }
+.dark .eyebrow { color: rgba(100,168,255,0.9); }
 
 /* Buttons */
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: var(--r); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; border: none; text-decoration: none; }
 .btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(192,120,32,0.32); }
+.btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,110,232,0.32); }
 .btn-ghost { background: transparent; color: var(--text-mid); border: 1.5px solid var(--border); }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 .btn-ghost-dark { background: transparent; color: var(--on-dark-mid); border: 1.5px solid rgba(250,247,242,0.2); }
@@ -71,7 +71,7 @@ img { max-width: 100%; display: block; }
 /* ===========================
    NAV
    =========================== */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; background: rgba(240,250,248,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; display: flex; align-items: center; background: rgba(242,246,255,0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.2s, box-shadow 0.2s; }
 nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 16px rgba(24,14,4,0.08); }
 .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 32px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .nav-brand { display: flex; align-items: center; gap: 10px; }
@@ -87,7 +87,7 @@ nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 16px rgba(2
 .nav-mobile-cta:hover { background: #20bd5a; }
 .nav-ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-ham span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 2px; }
-.nav-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(238,250,246,0.99); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; flex-direction: column; gap: 0; z-index: 99; }
+.nav-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(236,244,254,0.99); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 24px; flex-direction: column; gap: 0; z-index: 99; }
 .nav-drawer.open { display: flex; }
 .nav-drawer a { font-size: 15px; font-weight: 500; color: var(--text-mid); padding: 12px 0; border-bottom: 1px solid var(--border); transition: color 0.15s; }
 .nav-drawer a:hover, .nav-drawer a.active { color: var(--accent); }
