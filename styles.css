@@ -125,7 +125,7 @@ nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 16px rgba(2
    =========================== */
 footer { background: var(--bg-dark); color: var(--on-dark-mid); padding: 52px 0 28px; }
 .footer-wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
 .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--on-dark); margin-bottom: 4px; }
 .footer-brand-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--on-dark-dim); margin-bottom: 12px; }
 .footer-desc { font-size: 13px; color: var(--on-dark-mid); line-height: 1.7; max-width: 280px; }
