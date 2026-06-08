@@ -65,7 +65,15 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="why-me.html">Why Me</a></li>
-      <li><a href="services.html">Services</a></li>
+      <li class="nav-dropdown">
+        <a href="services.html" class="nav-dropdown-trigger">Services <svg class="nav-dropdown-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="income-tax-valuation.html" class="nav-drop-item"><span class="nav-drop-icon">📊</span><div><div class="nav-drop-name">Income Tax / Capital Gains</div><div class="nav-drop-desc">Section 50C &amp; 55 — IT Dept accepted</div></div></a>
+          <a href="home-loan-valuation.html" class="nav-drop-item"><span class="nav-drop-icon">🏠</span><div><div class="nav-drop-name">Home Loan / Bank</div><div class="nav-drop-desc">SBI, Canara, PNB &amp; 10+ banks</div></div></a>
+          <a href="visa-valuation.html" class="nav-drop-item"><span class="nav-drop-icon">✈️</span><div><div class="nav-drop-name">Visa Documentation</div><div class="nav-drop-desc">Canada, UK, US, Schengen &amp; UAE</div></div></a>
+          <a href="inheritance-valuation.html" class="nav-drop-item"><span class="nav-drop-icon">📋</span><div><div class="nav-drop-name">Inheritance &amp; Estate</div><div class="nav-drop-desc">Partition, succession &amp; court filings</div></div></a>
+        </div>
+      </li>
       <li><a href="credentials.html">Credentials</a></li>
       <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
     </ul>
@@ -91,13 +99,21 @@
   </div>
 </section>
 
+<!-- SERVICE TAB BAR -->
+<div class="svc-tabs">
+  <button class="svc-tab active" data-tab="svc-income-tax">📊 Income Tax / Capital Gains <span class="svc-tab-badge">Most common</span></button>
+  <button class="svc-tab" data-tab="svc-home-loan">🏠 Home Loan</button>
+  <button class="svc-tab" data-tab="svc-visa">✈️ Visa</button>
+  <button class="svc-tab" data-tab="svc-inheritance">📋 Inheritance &amp; Estate</button>
+</div>
+
 <!-- INDIVIDUAL SERVICES -->
-<section class="services-section">
+<section class="services-section" style="padding-top:48px;">
   <div class="wrap">
     <div class="svc-list">
 
       <!-- Income Tax -->
-      <div class="svc-card reveal">
+      <div class="svc-card" id="svc-income-tax">
         <div class="svc-header">
           <span class="svc-icon">&#128200;</span>
           <h3>Income Tax / Capital Gains Valuation</h3>
@@ -121,7 +137,7 @@
       </div>
 
       <!-- Home Loan -->
-      <div class="svc-card reveal">
+      <div class="svc-card" id="svc-home-loan" hidden>
         <div class="svc-header">
           <span class="svc-icon">&#127968;</span>
           <h3>Home Loan / Bank Valuation</h3>
@@ -145,7 +161,7 @@
       </div>
 
       <!-- Visa -->
-      <div class="svc-card reveal">
+      <div class="svc-card" id="svc-visa" hidden>
         <div class="svc-header">
           <span class="svc-icon">&#9992;</span>
           <h3>Visa Documentation Valuation</h3>
@@ -169,7 +185,7 @@
       </div>
 
       <!-- Inheritance -->
-      <div class="svc-card reveal">
+      <div class="svc-card" id="svc-inheritance" hidden>
         <div class="svc-header">
           <span class="svc-icon">&#128188;</span>
           <h3>Inheritance &amp; Estate Valuation</h3>
@@ -286,6 +302,23 @@
 </div>
 
 <script>
+// Service tab switching
+(function(){
+  var tabs = document.querySelectorAll('.svc-tab');
+  var cards = document.querySelectorAll('.svc-card[id]');
+  function activate(tab) {
+    tabs.forEach(function(t){ t.classList.remove('active'); });
+    cards.forEach(function(c){ c.hidden = true; });
+    tab.classList.add('active');
+    var el = document.getElementById(tab.dataset.tab);
+    if (el) el.hidden = false;
+  }
+  tabs.forEach(function(tab){ tab.addEventListener('click', function(){ activate(tab); }); });
+  // Support direct URL hash e.g. services.html#svc-home-loan
+  var hash = location.hash.slice(1);
+  var hashTab = hash && document.querySelector('.svc-tab[data-tab="'+hash+'"]');
+  if (hashTab) activate(hashTab);
+})();
 const nav = document.getElementById('main-nav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
 const ham = document.getElementById('ham');

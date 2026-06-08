@@ -92,6 +92,27 @@ nav.scrolled { border-bottom-color: var(--border); box-shadow: 0 2px 16px rgba(2
 .nav-drawer a { font-size: 15px; font-weight: 500; color: var(--text-mid); padding: 12px 0; border-bottom: 1px solid var(--border); transition: color 0.15s; }
 .nav-drawer a:hover, .nav-drawer a.active { color: var(--accent); }
 
+/* Nav Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-trigger { display: flex !important; align-items: center; gap: 4px; cursor: pointer; }
+.nav-dropdown-chevron { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 2.5; transition: transform .2s; flex-shrink: 0; }
+.nav-dropdown:hover .nav-dropdown-chevron { transform: rotate(180deg); }
+.nav-dropdown-menu { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 16px 48px rgba(15,36,97,.14); padding: 10px; width: 380px; z-index: 200; display: grid; grid-template-columns: 1fr 1fr; gap: 4px; opacity: 0; visibility: hidden; transition: opacity .15s, visibility .15s; pointer-events: none; }
+.nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; pointer-events: auto; }
+.nav-drop-item { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border-radius: 8px; text-decoration: none; transition: background .12s; }
+.nav-drop-item:hover { background: var(--bg-alt); }
+.nav-drop-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; line-height: 1; }
+.nav-drop-name { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.nav-drop-desc { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--text-light); line-height: 1.4; }
+
+/* Services Tab Bar */
+.svc-tabs { background: #fff; border-bottom: 2px solid var(--border); display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 50; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.svc-tabs::-webkit-scrollbar { display: none; }
+.svc-tab { display: flex; align-items: center; gap: 7px; padding: 14px 22px; font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500; color: var(--text-mid); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; white-space: nowrap; transition: color .15s, border-color .15s; flex-shrink: 0; }
+.svc-tab:hover { color: var(--text); }
+.svc-tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 600; }
+.svc-tab-badge { font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--accent-pale); color: var(--accent); padding: 2px 7px; border-radius: 10px; }
+
 /* ===========================
    PAGE HERO (interior pages)
    =========================== */
