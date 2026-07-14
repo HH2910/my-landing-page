@@ -141,12 +141,6 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://harihars.in/blog-property-tax-reassessment-nil-dues-chennai.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <url>
     <loc>https://harihars.in/blog-crz-wetland-ecr-chennai-property-valuation.html</loc>
@@ -157,6 +151,13 @@
 
   <url>
     <loc>https://harihars.in/blog-property-valuation-cost-chennai.html</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://harihars.in/blog-building-plan-deviation-chennai-valuation.html</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
