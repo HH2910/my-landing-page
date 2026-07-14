@@ -174,12 +174,12 @@
                 <option value="Home Loan / Bank Valuation">Home Loan / Bank Valuation</option>
                 <option value="Visa Documentation Valuation">Visa Documentation Valuation</option>
                 <option value="Inheritance &amp; Estate Valuation">Inheritance &amp; Estate Valuation</option>
-                <option value="Not sure — need guidance">Not sure &mdash; need guidance</option>
+                <option value="Not sure, need guidance">Not sure, need guidance</option>
               </select>
             </div>
             <div class="form-group">
               <label for="description">Description <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
-              <textarea id="description" name="description" rows="4" placeholder="Briefly describe your requirement — asset type, purpose, regulatory context..."></textarea>
+              <textarea id="description" name="description" rows="4" placeholder="Briefly describe your requirement: asset type, purpose, regulatory context..."></textarea>
             </div>
             <button type="submit" id="form-btn" class="btn btn-primary form-btn" onclick="gtag('event', 'generate_lead');">Submit Inquiry &rarr;</button>
           </form>
@@ -203,7 +203,7 @@
       <div>
         <div class="footer-brand">Harihar.S</div>
         <div class="footer-brand-sub">Chartered Engineer &middot; Registered Valuer</div>
-        <p class="footer-desc">Independent valuation and certification &mdash; personally led by Harihar.S. Based in Chennai, serving clients Pan-India.</p>
+        <p class="footer-desc">Independent valuation and certification, personally led by Harihar.S. Based in Chennai, serving clients Pan-India.</p>
       </div>
       <div>
         <div class="footer-col-title">Quick Links</div>
@@ -320,7 +320,7 @@ async function submitForm(e){
     open=!open;
     const win=document.getElementById('va-window'),fab=document.getElementById('va-fab');
     if(open){win.removeAttribute('hidden');fab.classList.add('va-fab--open');
-      if(!hist.length)render('assistant',"Hi, I'm the Valuation Advisor for harihars.in. Ask me anything about valuations, certifications, or regulatory requirements — I'm here to help.");
+      if(!hist.length)render('assistant',"Hi, I'm the Valuation Advisor for harihars.in. Ask me anything about valuations, certifications, or regulatory requirements, and I'm here to help.");
       setTimeout(()=>document.getElementById('va-input').focus(),80);
     }else{win.setAttribute('hidden','');fab.classList.remove('va-fab--open');}
   };
